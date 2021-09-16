@@ -1,142 +1,70 @@
-# react-reads
-## Project Description 
-Reads is a front-end site that displays the current NYT best-sellers (weekly). It uses the New York Times API to list the best-sellers in each of the seven NYT book-type sections. Selecting a book on the list takes the user to a more detailed page view that gives the user a short summary of the book and book details, such as author and cover. It will also provide a link to the NYT book review, returned by the API. 
-Sections are as follows : (Hardcover-Fiction, Hardcover-Non-fiction. Paperback Trade Fiction, Paperback Non-Fiction, Combined E-Book & Print Fiction, Combined E-Book & Print Non-fiction, Advice, How-To, Misc)
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Installation Instructions
-Note: This app was created using Visual Studio Code Version 1.60.1. 
-Fork and clone the repo using either SSH or HTTPS in a directory of your choice.
+## Available Scripts
 
-In terminal:
-```
-$ git clone [SSH/HTTPS KEY]
-```
-This is a react app and will require that relevent dependencies are downloaded. Move into the repo directory (named react-reads) and run:
+In the project directory, you can run:
 
-```
-$ cd ./react-reads
-$ npm install
-```
-Once dependencies are installed, open the app in your IDE of choice (this example uses Visual Studio Code terminal command). Then start the app: 
+### `npm start`
 
-```
-$ code . 
-$ npm start
-```
-To view main files, open the src directory. App.js contains the main code for the app and relevent components can be found in the components folder. 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Link to the API 
-> API link
-https://developer.nytimes.com/docs/books-product/1/overview
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Example Call for best-selling hard-cover fiction books for the week of 09/01/2021.
+### `npm test`
 
-For Book Details: 
-"https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&bestsellers-date=2021-09-01&api-key=[MY_API_KEY]"
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-For Book Reviews: 
-'https://api.nytimes.com/svc/books/v3/reviews.json?title=billy%20summers&api-key=[MY_API_KEY]'
+### `npm run build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Example data response 
-### API Res For Book Details: (Billy Summers by Stephen King) 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```json
-{
-  "status": "OK",
-  "copyright": "Copyright (c) 2021 The New York Times Company.  All Rights Reserved.",
-  "num_results": 15,
-  "last_modified": "2021-08-25T22:07:44-04:00",
-  "results": [
-    {
-      "list_name": "Hardcover Fiction",
-      "display_name": "Hardcover Fiction",
-      "bestsellers_date": "2021-08-21",
-      "published_date": "2021-09-05",
-      "rank": 1,
-      "rank_last_week": 1,
-      "weeks_on_list": 3,
-      "asterisk": 0,
-      "dagger": 0,
-      "amazon_product_url": "https://www.amazon.com/dp/1982173610?tag=NYTBSREV-20",
-      "book_details": [
-        {
-          "title": "BILLY SUMMERS",
-          "description": "A killer for hire who only takes out bad guys seeks redemption as he does one final job.",
-          "contributor": "by Stephen King",
-          "author": "Stephen King",
-          "contributor_note": "",
-          "price": "0.00",
-          "age_group": "",
-          "publisher": "Scribner",
-          "primary_isbn13": "9781982173616",
-          "primary_isbn10": "1982173610"
-        }
-      ],
-```
-### API Res for Book Reviews: (Billy Summers by Stephen King) 
-```
-{
-  "status": "OK",
-  "copyright": "Copyright (c) 2021 The New York Times Company.  All Rights Reserved.",
-  "num_results": 1,
-  "results": [
-    {
-      "url": "https://www.nytimes.com/2021/08/03/books/review/stephen-king-billy-summers.html",
-      "publication_dt": "2021-08-03",
-      "byline": "By James Lasdun",
-      "book_title": "Billy Summers",
-      "book_author": "",
-      "summary": "In “Billy Summers,” a hired killer and aspiring writer is lured from the brink of retirement with a lucrative assignment.",
-      "uuid": "00000000-0000-0000-0000-000000000000",
-      "uri": "nyt://book/00000000-0000-0000-0000-000000000000",
-      "isbn13": [
-        "9781982173616"
-      ]
-    }
-  ]
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Visual of component hierarchy
-<img width="1030" alt="Screen Shot 2021-09-16 at 11 00 11 AM" src="https://media.git.generalassemb.ly/user/38087/files/4f8f0800-16dd-11ec-948a-1e57c63e68db">
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## Wire Frames
-> Copy and paste or drag and drop your images here.
-<img width="1030" alt="Screen Shot 2021-09-15 at 11 14 49 PM" src="https://media.git.generalassemb.ly/user/38087/files/cd6df780-167a-11ec-816b-ffbb738bdbc6">
-<img width="1030" alt="Screen Shot 2021-09-15 at 11 14 59 PM" src="https://media.git.generalassemb.ly/user/38087/files/d068e800-167a-11ec-8f02-7ecc42cd574b">
-<img width="1030" alt="Screen Shot 2021-09-15 at 11 15 05 PM" src="https://media.git.generalassemb.ly/user/38087/files/d3fc6f00-167a-11ec-9103-6e008910b971">
-<img width="1030" alt="Screen Shot 2021-09-15 at 11 15 08 PM" src="https://media.git.generalassemb.ly/user/38087/files/d52d9c00-167a-11ec-89a6-662f4144f04a">
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-## User Stories
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-- As a user I would like to be able to navigate the site with a header.
-- As a user I would like to be able to navigate different sections according to the NYT criteria.
-- As a user I would like to be able to select a section and see the top best-sellers listed for that section, organized by rank.
-- As a user I would like to be able to select a book and learn more about it so I can decide if I would like to read it.
-- As a user I would like to know how long the book has been on the best-sellers list. 
-- As a user I would like to be able to read the NYT review regarding my selected book. 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### MVP Goals
-- Allow users to select pick between different best-selling sections (Hardcover-Fiction, Hardcover-Non-fiction. Paperback Trade Fiction, Paperback Non-Fiction, Combined E-Book & Print Fiction, Combined E-Book & Print Non-fiction, Advice, How-To, Misc).
-- Display a list of fifteen best-sellers in designated section based on rank of the current book.
-- On selection, display cover and summary of book along with information regarding the author, number of weeks on the list, rank this week, rank last week, and NYT review link.
+### Code Splitting
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Stretch Goals
-### Bronze
-- As a user I would like to select a book and add it to my own Reading List. 
-- As a user I would like to be able to add a short review of my own for my book.
+### Analyzing the Bundle Size
 
-### Silver
-- As a user I would like to track my progress through a book by being allowed to update how far I've read a book.
-- As a user I would like to add my current thoughts as I progress through my book. 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Gold
-- As a user I would to be able to search for books not on the NYT Best Seller List and add them to my Reading list. 
-- As a user I would like to have a habit tracker that keeps track of how much I am reading so I can build strong reading habits. 
-- As a user I would like to receive recommendations for more books according to the books in my Reading List.
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
