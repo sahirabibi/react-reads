@@ -33,10 +33,18 @@ function BestSellers(props) {
         return <h2>Loading Data...</h2>
     }
 
-	return <div> 
-        <h2>Top 15 Books </h2>
-    {
-        bestSellers.map(book => <li><BestSellerCard book={book}></BestSellerCard></li>)}</div>;
+	return (
+		<div>
+			<h2>Top 15 Books </h2>
+			<div className='best-sellers'>
+				{bestSellers.map((book) => (
+					<li>
+						<BestSellerCard book={book}></BestSellerCard>
+					</li>
+				))}
+			</div>
+		</div>
+	);
 }
 
 export default BestSellers;

@@ -40,8 +40,7 @@ function App() {
 			{/* Header provides navigation of side*/}
 			<Header />
 			{/* Pass BestSeller and Genre List Data to relevant components */}
-			<DataContext.Provider
-				value={{ genres, setGenres, date, setDate }}>
+			<DataContext.Provider value={{ genres, setGenres, date, setDate }}>
 				<Route exact path='/'>
 					<Home />
 				</Route>
@@ -49,10 +48,12 @@ function App() {
 					<GenreList />
 				</Route>
 				<Route exact path='/best-sellers/:name'>
-					<BestSellers/>
+					<BestSellers />
 				</Route>
 			</DataContext.Provider>
-			<About/>
+			<Route exact path='/about'>
+				<About />
+			</Route>
 		</div>
 	);
 }

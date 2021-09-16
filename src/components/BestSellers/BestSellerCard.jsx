@@ -6,8 +6,8 @@ function BestSellerCard({book}) {
     // Link to BookDetails attached on this card so on click can render book details page
     return (
 			<Link to={`/best-sellers/genre/${book.isbns[0].isbn10}`}>
-				<div className='best-sellers-container'>
-					<img src={book['book_image']}></img>
+				<div className='book-container'>
+					<img className='book-cover' src={book['book_image']}></img>
 					<div className='book-info'>
 						<h3 className='title'>{book.title}</h3>
 						<h5>{book.author}</h5>

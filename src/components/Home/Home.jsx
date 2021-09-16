@@ -9,9 +9,7 @@ import { useState, useEffect, useContext } from 'react';
 function Home(props) {
     return (
 			<div>
-				
-				<BestSellers />
-				<BookDetails />
+				<h2>Start Your Reading Journey Today</h2>
 			</div>
 		);
 }
