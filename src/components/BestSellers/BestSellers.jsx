@@ -13,9 +13,10 @@ function BestSellers(props) {
 	// get current date using Date() / list_name parameters, setBestSellers
 	// return each book as a card item with rank
 	// map array of bestSellers on BestSellerCard
-	const { date } = useContext(DataContext);
+	const { date, genres } = useContext(DataContext);
 	const [bestSellers, setBestSellers] = useState();
 	const { name } = useParams();
+
 
 	// api url by genre title and date
 	const bestSellersURL = `https://api.nytimes.com/svc/books/v3/lists/${date}/${name}.json?api-key=${api_key}`;
@@ -32,7 +33,10 @@ function BestSellers(props) {
         return <h2>Loading Data...</h2>
     }
 
-	return <div> {bestSellers.map(book => <li>Rank: {book.rank}. {book.title}</li>)}</div>;
+	return <div> 
+        <h2>Top 15 Books </h2>
+    {
+        bestSellers.map(book => <li><BestSellerCard book={book}></BestSellerCard></li>)}</div>;
 }
 
 export default BestSellers;
