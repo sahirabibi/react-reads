@@ -15,6 +15,7 @@ $ git clone [SSH/HTTPS KEY]
 This is a react app and will require that relevent dependencies are downloaded. Move into the repo directory (named react-reads) and run:
 
 ```
+$ cd ./react-reads
 $ npm install
 ```
 Once dependencies are installed, open the app in your IDE of choice (this example uses Visual Studio Code terminal command). Then start the app: 
