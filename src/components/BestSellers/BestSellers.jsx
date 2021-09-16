@@ -1,18 +1,38 @@
 import React from 'react';
-import BestSellerCard from './BestSellerCard'
+import BestSellerCard from './BestSellerCard';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { DataContext } from '../../DataContext';
+
+const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
 
 function BestSellers(props) {
-    
-	// run api call based on which genre was clicked using the list_name in the url 
-    // set state variable with array of books 
-    // get current date using Date() / list_name parameters, setBestSellers
-    // return each book as a card item with rank
-    // map array of bestSellers on BestSellerCard
-    
-	return <div>
-    <BestSellerCard></BestSellerCard>
+	// run api call based on which genre was clicked using the list_name in the url
+	// set state variable with array of books
+	// get current date using Date() / list_name parameters, setBestSellers
+	// return each book as a card item with rank
+	// map array of bestSellers on BestSellerCard
+	const { date } = useContext(DataContext);
+	const [bestSellers, setBestSellers] = useState();
+	const { name } = useParams();
 
-    </div>;
+	// api url by genre title and date
+	const bestSellersURL = `https://api.nytimes.com/svc/books/v3/lists/${date}/${name}.json?api-key=${api_key}`;
+
+    // run api call and retrieve array of top 15 best sellers in genre
+	useEffect(() => {
+		axios
+			.get(bestSellersURL)
+			.then((res) => setBestSellers(res.data.results.books))
+			.catch((err) => console.log(err));
+	}, []);
+
+    if (!bestSellers) {
+        return <h2>Loading Data...</h2>
+    }
+
+	return <div> {bestSellers.map(book => <li>Rank: {book.rank}. {book.title}</li>)}</div>;
 }
 
 export default BestSellers;

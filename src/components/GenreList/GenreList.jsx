@@ -19,7 +19,7 @@ function GenreList() {
     return (
 			<div>
 				{genres.map((genre) => (
-					<Link to={`/best-sellers/${genre.list_name_encoded}`}>
+					<Link to={`/best-sellers/${genre.list_name_encoded}`} key={genre['list_id']}>
 						<li>{genre['display_name']}</li>
 					</Link>
 				))}

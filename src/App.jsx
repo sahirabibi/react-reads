@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -16,14 +15,15 @@ const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-
 
 function App() {
 	const [genres, setGenres] = useState([]);
-	const [overView, setOverview] = useState();
-	const [bestSellers, setBestSellers] = useState();
+	const [date, setDate] = useState();
+
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
 		axios
 			.get(genre_api)
 			.then((res) => {
 				console.log(res.data.results);
+				setDate(res.data.results['bestsellers_date'])
 				setGenres(res.data.results.lists.splice(0, 7));
 			})
 			.catch((err) => console.log(err));
@@ -41,14 +41,18 @@ function App() {
 			<Header />
 			{/* Pass BestSeller and Genre List Data to relevant components */}
 			<DataContext.Provider
-				value={{ genres, setGenres, bestSellers, setBestSellers }}>
+				value={{ genres, setGenres, date, setDate }}>
 				<Route exact path='/'>
 					<Home />
 				</Route>
 				<Route exact path='/best-sellers'>
 					<GenreList />
 				</Route>
+				<Route exact path='/best-sellers/:name'>
+					<BestSellers/>
+				</Route>
 			</DataContext.Provider>
+			<About/>
 		</div>
 	);
 }
