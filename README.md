@@ -3,6 +3,28 @@
 Reads is a front-end site that displays the current NYT best-sellers (weekly). It uses the New York Times API to list the best-sellers in each of the seven NYT book-type sections. Selecting a book on the list takes the user to a more detailed page view that gives the user a short summary of the book and book details, such as author and cover. It will also provide a link to the NYT book review, returned by the API. 
 Sections are as follows : (Hardcover-Fiction, Hardcover-Non-fiction. Paperback Trade Fiction, Paperback Non-Fiction, Combined E-Book & Print Fiction, Combined E-Book & Print Non-fiction, Advice, How-To, Misc)
 
+
+## Installation Instructions
+Note: This app was created using Visual Studio Code Version 1.60.1. 
+Fork and clone the repo using either SSH or HTTPS in a directory of your choice.
+
+In terminal:
+```
+$ git clone [SSH/HTTPS KEY]
+```
+This is a react app and will require that relevent dependencies are downloaded. Move into the repo directory (named react-reads) and run:
+
+```
+$ npm install
+```
+Once dependencies are installed, open the app in your IDE of choice (this example uses Visual Studio Code terminal command). Then start the app: 
+
+```
+$ code . 
+$ npm start
+```
+To view main files, open the src directory. App.js contains the main code for the app and relevent components can be found in the components folder. 
+
 ## Link to the API 
 > API link
 https://developer.nytimes.com/docs/books-product/1/overview
