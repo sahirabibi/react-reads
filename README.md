@@ -3,7 +3,7 @@
 Reads is a front-end site that displays the current NYT best-sellers (weekly). It uses the New York Times API to list the best-sellers in each of the seven NYT book-type sections. Selecting a book on the list takes the user to a more detailed page view that gives the user a short summary of the book and book details, such as author and cover. It will also provide a link to the NYT book review, returned by the API. 
 Sections are as follows : (Hardcover-Fiction, Hardcover-Non-fiction. Paperback Trade Fiction, Paperback Non-Fiction, Combined E-Book & Print Fiction, Combined E-Book & Print Non-fiction, Advice, How-To, Misc)
 
-## Link to the API you plan to use
+## Link to the API 
 > API link
 https://developer.nytimes.com/docs/books-product/1/overview
 
@@ -16,7 +16,7 @@ For Book Reviews:
 'https://api.nytimes.com/svc/books/v3/reviews.json?title=billy%20summers&api-key=[MY_API_KEY]'
 
 
-## Example data response you plan to use
+## Example data response 
 ### API Res For Book Details: (Billy Summers by Stephen King) 
 
 ```json
@@ -37,20 +37,6 @@ For Book Reviews:
       "asterisk": 0,
       "dagger": 0,
       "amazon_product_url": "https://www.amazon.com/dp/1982173610?tag=NYTBSREV-20",
-      "isbns": [
-        {
-          "isbn10": "1982173610",
-          "isbn13": "9781982173616"
-        },
-        {
-          "isbn10": "1982173637",
-          "isbn13": "9781982173630"
-        },
-        {
-          "isbn10": "179712269X",
-          "isbn13": "9781797122694"
-        }
-      ],
       "book_details": [
         {
           "title": "BILLY SUMMERS",
@@ -65,15 +51,6 @@ For Book Reviews:
           "primary_isbn10": "1982173610"
         }
       ],
-      "reviews": [
-        {
-          "book_review_link": "",
-          "first_chapter_link": "",
-          "sunday_review_link": "",
-          "article_chapter_link": ""
-        }
-      ]
-    }, ...
 ```
 ### API Res for Book Reviews: (Billy Summers by Stephen King) 
 ```
@@ -98,7 +75,7 @@ For Book Reviews:
   ]
 ```
 
-## Visual of your component hierarchy
+## Visual of component hierarchy
 <img width="1030" alt="Screen Shot 2021-09-16 at 11 00 11 AM" src="https://media.git.generalassemb.ly/user/38087/files/4f8f0800-16dd-11ec-948a-1e57c63e68db">
 
 
@@ -113,7 +90,7 @@ For Book Reviews:
 
 
 ## User Stories
-> Add user stories following the _As a [type of user], I want [what the user wants], so that [what it helps accomplish]_ format.
+
 - As a user I would like to be able to navigate the site with a header.
 - As a user I would like to be able to navigate different sections according to the NYT criteria.
 - As a user I would like to be able to select a section and see the top best-sellers listed for that section, organized by rank.
