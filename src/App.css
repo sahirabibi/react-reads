@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
+
+.App {
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
+/* Header */
+
+header {
+  background-color: rgb(38, 45, 107);
+  color:white;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+nav > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding-bottom: 10px;
+  
+}
+
+nav > ul > a {
+  color:white;
+  font-size: 1.5rem;
+  
+}
+
+nav > ul > a:hover {
+  background-color: rgb(122, 126, 192);
+}
+
+/* Home */
+.main {
+  margin: 10%;
+  
+}
+
+.main > h2 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+button {
+  background-color: transparent;
+  color:rgb(80, 82, 133);
+  border: 2px solid rgb(80, 82, 133);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: rgb(80, 82, 133);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+button:hover {
+  background-color:rgb(80, 82, 133);
+  border: none;
+  border: 2px solid rgb(80, 82, 133);
+  color:white;
+}
+
+/* Genres List */
+
+.genres-list {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  align-items: center;
+  font-size: 2rem;
+  margin: 10%;
+  
+}
+
+.genres-list > a  {
+  color: black;
+
+}
+
+
+.genre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(142, 169, 218);
+  color:white;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.genre:hover {
+  background-color:transparent;
+  color: rgb(80, 82, 133);
+  border: 2px solid rgb(80, 82, 133);
+}
+
+/* Best Sellers Page */
+
+.best-sellers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+
+.book-container {
+  /* border: 1px solid rgba(182, 177, 177, 0.933); */
+  
+}
+
+.book-cover {
+  object-fit:cover;
+  width: 60%;
+  height:50%;
+}
+
+.book-info {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+
+}
+
+a {
+  text-decoration: none;
+
+}
+li {
+  list-style: none;
+}
+
+/* Book Details */
+.details-container {
+  display:grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr;
+  width: 90vw;
+  line-height: 1.5;
+}
+
+.details {
+  text-align: left;
+  max-width: 700px;
+  min-width: 300px;
+  border: 2px solid rgb(80, 82, 133);
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin: 5% 0;
+}
+
+.details-cover {
+  object-fit: cover;
+  width: 300px;
+  height:max-content;
+  margin: 5%;
+}
+
+.about {
+  border: 2px solid rgb(80, 82, 133);
+  margin: 5% 20%;
+  padding: 0 5% 5%;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+.about > p {
+  font-size: 1.5rem;
+}
+
+
+
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
