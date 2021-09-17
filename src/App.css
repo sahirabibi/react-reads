@@ -27,6 +27,7 @@ h1 {
 nav {
   grid-row: 1 / span 2;
   grid-column: 2 / span 1;
+  padding-bottom: 10px;
   
 }
 
@@ -45,6 +46,7 @@ nav > ul > a {
 nav > ul > a {
   color:white;
   font-size: 1.5rem;
+  
 }
 
 nav > ul > a:hover {
@@ -102,17 +104,21 @@ button:hover {
 
 
 .genre {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(131, 144, 168);
+  border: 1px solid rgb(131, 144, 168);
   color:white;
   height: 80px;
   padding: 10px;
   border-radius: 10px;
+  font-size: 80%;
 }
 
 .genre:hover {
+  /* position: absolute; */
   background-color:transparent;
   color:rgb(131, 144, 168);
   border: 1px solid rgb(131, 144, 168);
@@ -124,28 +130,46 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  grid-gap: 70px 50px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 
 .book-container {
-  /* border: 1px solid rgba(182, 177, 177, 0.933); */
+  height: 75%;
+  width: 100%;
+  border: 1px solid rgb(248, 248, 248);
+  box-shadow: 5px 5px 10px rgb(109, 105, 105);
+  margin: 2%;
   
 }
 
 .book-cover {
   object-fit:cover;
-  width: 60%;
-  height:50%;
+  width: 100%;
+  height:100%;
 }
 
 .book-info {
+  border: 1px solid rgb(245, 241, 241);
+  box-shadow: 5px 5px 10px rgb(109, 105, 105);
+  color:black;
+  height: 30%;
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
-
+  /* align-items: center; */
+  font-family: 'Montserrat', sans-serif;
+  font-size:80%;
+  padding: 10px 0;
 }
+
+.title, .author, .description {
+  margin: 2px;
+}
+
+
 
 a {
   text-decoration: none;
@@ -194,6 +218,36 @@ li {
 }
 
 
+@media (max-width:900px) {
+  .best-sellers {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+  }
+
+  .genre {
+    font-size: 60%;
+  }
+  
+}
+
+@media (max-width:700px) {
+  .best-sellers {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+  }
+
+  .book-container {
+    width:90%;
+  }
+
+  nav {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  
+}
 
 
 
