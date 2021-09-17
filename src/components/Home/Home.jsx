@@ -8,8 +8,9 @@ import { useState, useEffect, useContext } from 'react';
 
 function Home(props) {
     return (
-			<div>
+			<div className='main'>
 				<h2>Start Your Reading Journey Today</h2>
+				<Link to='/best-sellers'><button>Best Sellers List</button></Link>
 			</div>
 		);
 }

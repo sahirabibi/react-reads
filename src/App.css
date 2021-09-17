@@ -1,37 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 /* Header */
 
 header {
-  background-color: black;
+  background-color: rgb(38, 45, 107);
   color:white;
 }
 
@@ -41,7 +19,7 @@ h1 {
 
 nav > ul {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   padding-bottom: 10px;
   
@@ -49,7 +27,79 @@ nav > ul {
 
 nav > ul > a {
   color:white;
+  font-size: 1.5rem;
   
+}
+
+nav > ul > a:hover {
+  background-color: rgb(122, 126, 192);
+}
+
+/* Home */
+.main {
+  margin: 10%;
+  
+}
+
+.main > h2 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+button {
+  background-color: transparent;
+  color:rgb(80, 82, 133);
+  border: 2px solid rgb(80, 82, 133);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: rgb(80, 82, 133);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+button:hover {
+  background-color:rgb(80, 82, 133);
+  border: none;
+  border: 2px solid rgb(80, 82, 133);
+  color:white;
+}
+
+/* Genres List */
+
+.genres-list {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  align-items: center;
+  font-size: 2rem;
+  margin: 10%;
+  
+}
+
+.genres-list > a  {
+  color: black;
+
+}
+
+
+.genre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(142, 169, 218);
+  color:white;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.genre:hover {
+  background-color:transparent;
+  color: rgb(80, 82, 133);
+  border: 2px solid rgb(80, 82, 133);
 }
 
 /* Best Sellers Page */
@@ -110,6 +160,18 @@ li {
   width: 90%;
   height:90%;
   margin: 1%;
+}
+
+.about {
+  border: 2px solid rgb(80, 82, 133);
+  margin: 5% 20%;
+  padding: 0 5% 5%;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+.about > p {
+  font-size: 1.5rem;
 }
 
 

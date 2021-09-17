@@ -25,7 +25,7 @@ function App() {
 			.then((res) => {
 				console.log(res.data.results);
 				setDate(res.data.results['bestsellers_date'])
-				setGenres(res.data.results.lists.splice(0, 7));
+				setGenres(res.data.results.lists.splice(0, 8));
 			})
 			.catch((err) => console.log(err));
 	}, []);

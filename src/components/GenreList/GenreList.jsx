@@ -17,10 +17,10 @@ function GenreList() {
     // const [genreSample, setGenreSample] = useState(genres.splice(0, 8))
 
     return (
-			<div>
+			<div className='genres-list'>
 				{genres.map((genre) => (
 					<Link to={`/best-sellers/${genre.list_name_encoded}`} key={genre['display_name']}>
-						<li>{genre['display_name']}</li>
+						<li className='genre'>{genre['display_name']}</li>
 					</Link>
 				))}
 			</div>
