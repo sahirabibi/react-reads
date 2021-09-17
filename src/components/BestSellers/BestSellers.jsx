@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
+import { Link } from 'react-router-dom'
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
+// const api_key=process.env.REACT_APP_NYT_KEY
 
 function BestSellers(props) {
 	// run api call based on which genre was clicked using the list_name in the url

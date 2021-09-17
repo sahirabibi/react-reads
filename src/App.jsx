@@ -11,6 +11,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
+// const api_key = process.env.REACT_APP_NYT_API;
 const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
 
 function App() {
@@ -31,10 +32,6 @@ function App() {
 
 	// API call to get data for NYT BestSellers
 
-	useEffect(() => {
-		axios.get().then().catch(err => console.log(err))
-	})
-
 	return (
 		<div className='App'>
 			{/* Header provides navigation of side*/}
@@ -51,6 +48,9 @@ function App() {
 					<BestSellers />
 				</Route>
 			</DataContext.Provider>
+			<Route exact path='/best-sellers/genre/:isbn'>
+				<BookDetails />
+			</Route>
 			<Route exact path='/about'>
 				<About />
 			</Route>

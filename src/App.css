@@ -89,6 +89,29 @@ li {
   list-style: none;
 }
 
+/* Book Details */
+.details-container {
+  display:grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr;
+  width: 90vw;
+  line-height: 1.5;
+}
+
+.details {
+  text-align: left;
+  max-width: 700px;
+  min-width: 300px;
+  margin: 10%;
+}
+
+.details-cover {
+  object-fit: cover;
+  width: 90%;
+  height:90%;
+  margin: 1%;
+}
+
 
 
 
