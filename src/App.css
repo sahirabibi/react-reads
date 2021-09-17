@@ -152,14 +152,17 @@ li {
   text-align: left;
   max-width: 700px;
   min-width: 300px;
-  margin: 10%;
+  border: 2px solid rgb(80, 82, 133);
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin: 5% 0;
 }
 
 .details-cover {
   object-fit: cover;
-  width: 90%;
-  height:90%;
-  margin: 1%;
+  width: 300px;
+  height:max-content;
+  margin: 5%;
 }
 
 .about {
