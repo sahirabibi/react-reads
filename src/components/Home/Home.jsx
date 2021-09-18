@@ -13,11 +13,18 @@ function Home(props) {
 
 	useEffect(() => {
 		// add all book image nested inside of genres to display
-		let newDisplay = genres
-			.map((genre) => genre.books.map((book) => book['book_image']))
-			.reduce((acc, item) => acc.concat(item), []);
-		setDisplay([...newDisplay]);
-	}, []);
+		let newDisplay = genres.map((genre) => genre.books)
+		// iterate over newDisplay arr and extract all urls for book covers and setDisplay
+		let bookURLS = [];
+		for (let i = 0; i < newDisplay.length; i++) {
+			for (let j = 0; j < newDisplay[i].length; j++) {
+				bookURLS.push(newDisplay[i][j]['book_image'])
+			}
+		}
+		console.log(bookURLS)
+		setDisplay([display, ...bookURLS]);
+	}, [genres]);
+
 
 	return (
 		<div className='main'>
@@ -29,7 +36,7 @@ function Home(props) {
 			</div>
 
 			<div className='display'>
-				{display.splice(0, 17).map((book, idx) => (
+				{display.splice(15, 19).map((book, idx) => (
 					<img className='display-book' id={`book-${idx}`} src={book}></img>
 				))}
 			</div>

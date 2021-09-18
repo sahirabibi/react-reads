@@ -5,8 +5,8 @@
 	text-align: center;
 	font-family: 'Nunito Sans', sans-serif;
 	background-color: rgb(22, 22, 26);
-  height:100vh;
-  width:100vw;
+	height: 1000px;
+	width: 100%;
 }
 
 /* Header */
@@ -59,21 +59,23 @@ nav > ul > a:hover {
 	justify-content: center;
 }
 
-.main > h2 {
+h2 {
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 600;
-	font-size: 2rem;
+	font-size: 3rem;
+	background-color: crimson;
+  border-radius: 5px;;
+  padding: 10px 10px;
 }
 
 .main-tag {
 	position: absolute;
 	z-index: 1;
 	margin: 10px 20px;
-	background-color: rgba(22, 18, 18, 0.9);
+	/* background-color: rgba(22, 4, 4, 0.9); */
 	margin-top: 15%;
 	color: white;
 	padding: 20px;
-	border-radius: 20px;
 }
 
 .display {
@@ -89,12 +91,13 @@ nav > ul > a:hover {
 	position: relative;
 	opacity: 0.5;
 	margin: 0 auto;
+	/* transform: rotateZ(45deg) */
 }
 
 .display-book {
 	object-fit: cover;
-	transition-timing-function: ease-in;
-	transition: 1s;
+	/* transition-timing-function: ease-in;
+	transition: 1s; */
 	width: 100%;
 	height: 100%;
 	-webkit-animation: expand 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -104,44 +107,46 @@ nav > ul > a:hover {
 	animation: expand 1s;
 }
 
+.display-book:hover {
+	opacity: 1;
+}
+
 @keyframes expand {
 	from {
-		width: 0;
-    height: 0;
+		transform: scale(0);
 	}
 	to {
-		width: 100%;
-    height: 100%;
+		transform: scale(1);
 	}
 }
 
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
+@-webkit-keyframes expand {
 	from {
-		opacity: 0;
+		transform: scale(0);
 	}
 	to {
-		opacity: 1;
+		transform: scale(1);
 	}
 }
 
 #book-4,
 #book-8,
 #book-12,
-#book-18 {
+#book-14 {
 	grid-row: span 2;
 	grid-column: span 2;
 }
 
 #book-2,
 #book-5,
-#book-9 {
+#book-9 
+#book-13{
 	grid-row: span 2;
 	grid-column: span 2;
 }
 
 #book-3 {
-	grid-row: span 3;
+	grid-row: span 2;
 	grid-column: span 2;
 }
 
@@ -150,13 +155,10 @@ nav > ul > a:hover {
 	grid-column: span 3;
 }
 
-.display {
-	transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
 button {
-	background-color: transparent;
-	color: rgb(79, 82, 182);
+	color:white;
+	background-color: rgb(79, 82, 182);
 	border: 2px solid rgb(79, 82, 182);
 	padding: 10px 20px;
 	border-radius: 5px;
@@ -166,10 +168,10 @@ button {
 }
 
 button:hover {
-	background-color: rgb(80, 82, 133);
-	border: none;
-	border: 2px solid rgb(80, 82, 133);
-	color: white;
+	background-color: rgb(5, 6, 29);
+	border: 2px solid rgb(79, 82, 182);
+	color: rgb(229, 229, 236);
+  cursor: pointer;
 }
 
 /* Genres List */
@@ -223,7 +225,6 @@ button:hover {
 .book-container {
 	height: 75%;
 	width: 100%;
-	border: 1px solid rgb(248, 248, 248);
 	box-shadow: 5px 5px 10px rgb(109, 105, 105);
 	margin: 2%;
 }
@@ -235,9 +236,8 @@ button:hover {
 }
 
 .book-info {
-	border: 1px solid rgb(245, 241, 241);
 	box-shadow: 5px 5px 10px rgb(109, 105, 105);
-	color: black;
+	color: white;
 	height: 30%;
 	display: flex;
 	flex-direction: column;
@@ -252,6 +252,7 @@ button:hover {
 .author,
 .description {
 	margin: 2px;
+  line-height: 1.5;
 }
 
 a {
