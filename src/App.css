@@ -179,15 +179,25 @@ button:hover {
 }
 
 /* Genres List */
+.featured-list {
+	margin: 0;
+	background-color: transparent;
+	text-align: left;
+	border-bottom: 2px solid crimson;
+	color: white;
+	border-radius:0;
+	font-size: 1.5rem;
+}
+
 
 .genres-list {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
+	grid-template-rows: 1fr 1fr;
 	gap: 20px;
 	align-items: center;
 	font-size: 2rem;
-	margin: 10%;
+	margin: 0 10%;
 }
 
 .genres-list > a {
@@ -195,19 +205,40 @@ button:hover {
 }
 
 .genre {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	/* grid-row: 1 / span 2; */
+	display: grid;
+	grid-template-columns: 1fr, 1fr;
+	grid-template-rows: repeat(5, 1fr);
 	background-color: rgb(151, 47, 68);
 	border: 1px solid rgb(151, 47, 68);
 	color: white;
-	height: 80px;
-	padding: 10px;
-	font-size: 80%;
+	height: 180px;
+	/* padding: 10px; */
+	font-size: 70%;
 	border-radius:3px;
 	font-weight: 600;
 }
+
+.featured-covers {
+	object-fit: contain;
+	height:80%;
+	width: 90%;
+	grid-row: 1 / span 5;
+	grid-column: 2/ span 1;
+	display: flex;
+	margin:10px;
+}
+
+.genre-name {
+	grid-row: 1 / span 2;
+	margin: 20px;
+	text-align: left;
+}
+
+#feature-img {
+	margin: 5px;
+}
+
 
 .genre:hover {
 	/* position: absolute; */

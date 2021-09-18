@@ -14,7 +14,7 @@ function Header(props) {
 							<li>Home</li>
 						</Link>
 						<Link to='/best-sellers'>
-							<li>Best Sellers</li>
+							<li>Featured List</li>
 						</Link>
 						<Link to='/about'>
 							<li>About</li>

@@ -18,9 +18,21 @@ function GenreList() {
 
     return (
 			<div className='genres-list'>
+				<h2 className='featured-list'>Featured Lists</h2>
 				{genres.map((genre) => (
-					<Link to={`/best-sellers/${genre.list_name_encoded}`} key={genre['display_name']}>
-						<li className='genre'>{genre['display_name']}</li>
+					<Link
+						to={`/best-sellers/${genre.list_name_encoded}`}
+						key={genre['display_name']}>
+						<div className='genre'>
+							<li className='genre-name'>{genre['display_name']}</li>
+							<div className='featured-covers'>
+								{genre.books.map((bookCover) => (
+									<img
+										className='book-cover' id='feature-img'
+										src={bookCover['book_image']}></img>
+								))}
+							</div>
+						</div>
 					</Link>
 				))}
 			</div>
