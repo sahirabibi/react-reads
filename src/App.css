@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+html, body {
+	height: 100%;
+	background-color: rgb(22, 22, 26);
+}
+
 .App {
 	text-align: center;
 	font-family: 'Nunito Sans', sans-serif;
-	background-color: rgb(22, 22, 26);
-	height: 1000px;
 	width: 100%;
 }
 
