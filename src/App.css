@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-html, body {
+html,
+body {
 	height: 100%;
 	background-color: rgb(22, 22, 26);
 	/* background-color: rgb(253, 247, 247); */
@@ -68,8 +69,8 @@ h2 {
 	font-weight: 600;
 	font-size: 3rem;
 	background-color: crimson;
-  	border-radius: 5px;;
-  	padding: 10px 10px;
+	border-radius: 5px;
+	padding: 10px 10px;
 }
 
 .main-tag {
@@ -98,7 +99,8 @@ h2 {
 	/* transform: rotateZ(45deg) */
 }
 
-.display-book, .book-cover {
+.display-book,
+.book-cover {
 	object-fit: cover;
 	/* transition-timing-function: ease-in;
 	transition: 1s; */
@@ -143,8 +145,7 @@ h2 {
 
 #book-2,
 #book-5,
-#book-9 
-#book-13{
+#book-9 #book-13 {
 	grid-row: span 2;
 	grid-column: span 2;
 }
@@ -159,9 +160,8 @@ h2 {
 	grid-column: span 3;
 }
 
-
 button {
-	color:white;
+	color: white;
 	background-color: rgb(79, 82, 182);
 	border: 2px solid rgb(79, 82, 182);
 	padding: 10px 20px;
@@ -175,7 +175,7 @@ button:hover {
 	background-color: rgb(5, 6, 29);
 	border: 2px solid rgb(79, 82, 182);
 	color: rgb(229, 229, 236);
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* Genres List */
@@ -185,10 +185,9 @@ button:hover {
 	text-align: left;
 	border-bottom: 2px solid crimson;
 	color: white;
-	border-radius:0;
+	border-radius: 0;
 	font-size: 1.5rem;
 }
-
 
 .genres-list {
 	display: grid;
@@ -209,42 +208,44 @@ button:hover {
 	display: grid;
 	grid-template-columns: 1fr, 1fr;
 	grid-template-rows: repeat(5, 1fr);
-	background-color: rgb(151, 47, 68);
-	border: 1px solid rgb(151, 47, 68);
+	/* background-color: rgb(151, 47, 68); */
+	border-bottom: 2px solid rgb(151, 47, 68);
 	color: white;
 	height: 180px;
 	/* padding: 10px; */
 	font-size: 70%;
-	border-radius:3px;
+	/* border-radius:3px; */
 	font-weight: 600;
+	transition: transform 0.5s;
+}
+
+.genre:hover,
+.book-container:hover {
+	/* position: absolute; */
+	transform: scale(1.1);
 }
 
 .featured-covers {
 	object-fit: contain;
-	height:80%;
+	height: 80%;
 	width: 90%;
 	grid-row: 1 / span 5;
-	grid-column: 2/ span 1;
+	grid-column: 2 / span 1;
 	display: flex;
-	margin:10px;
+	margin: 10px;
 }
+
 
 .genre-name {
 	grid-row: 1 / span 2;
 	margin: 20px;
 	text-align: left;
+	border-bottom: 2px solid rgb(79, 82, 182);
+	width: max-content;
 }
 
 #feature-img {
 	margin: 5px;
-}
-
-
-.genre:hover {
-	/* position: absolute; */
-	background-color: transparent;
-	color: crimson;
-	border: 1px solid crimson;
 }
 
 /* Best Sellers Page */
@@ -259,9 +260,10 @@ button:hover {
 }
 
 .book-container {
-	height: 75%;
-	width: 100%;
+	height: 65%;
+	width: 65%;
 	margin: 2%;
+	transition: transform 0.5s;
 }
 
 .book-cover {
@@ -279,7 +281,7 @@ button:hover {
 	justify-content: center;
 	/* align-items: center; */
 	font-family: 'Montserrat', sans-serif;
-	font-size: 80%;
+	font-size: 0.7vw;
 	padding: 10px 0;
 }
 
@@ -287,7 +289,7 @@ button:hover {
 .author,
 .description {
 	margin: 2px;
-  line-height: 1.5;
+	line-height: 1.5;
 }
 
 a {
@@ -309,7 +311,7 @@ li {
 }
 
 .details {
-	color:white;
+	color: white;
 	text-align: left;
 	max-width: 700px;
 	min-width: 300px;
@@ -321,18 +323,16 @@ li {
 
 .details-cover {
 	padding: 0;
-	margin:0;
+	margin: 0;
 	display: flex;
 	justify-content: right;
 	align-items: center;
-	
-	
 }
 
 .details-cover > .book-cover {
 	object-fit: contain;
 	max-height: 70%;
-	width:70%;
+	width: 70%;
 }
 
 .about {
@@ -341,7 +341,7 @@ li {
 	padding: 0 5% 5%;
 	font-size: 1.5rem;
 	border-radius: 10px;
-	color:white;
+	color: white;
 	height: 300px;
 }
 
