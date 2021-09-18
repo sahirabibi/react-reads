@@ -45,7 +45,7 @@ function BookDetails() {
 					<li>Publisher: {bookDetails.publisher}</li>
 					<li>
 						ISBNS:{' '}
-						{bookDetails.isbns.map((isbn) => {
+						{bookDetails.isbns.splice(0, 3).map((isbn) => {
 							return <li>{isbn.isbn10}</li>;
 						})}
 					</li>

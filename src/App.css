@@ -1,192 +1,392 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-.App {
-  text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
+html, body {
+	height: 100%;
+	background-color: rgb(22, 22, 26);
+	/* background-color: rgb(253, 247, 247); */
 }
 
+.App {
+	text-align: center;
+	font-family: 'Nunito Sans', sans-serif;
+	width: 100%;
+}
 
 /* Header */
 
 header {
-  background-color: rgb(38, 45, 107);
-  color:white;
+	background-color: rgb(22, 22, 26);
+	color: white;
+	display: grid;
+	grid-template-columns: 1fr 5fr 1fr;
+	grid-template-rows: 1fr;
 }
 
 h1 {
-  font-size: 4rem;
+	font-size: 3.5rem;
+	margin: 0 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+	grid-row: 1 / span 2;
+	grid-column: 2 / span 1;
+	padding-bottom: 10px;
 }
 
 nav > ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  padding-bottom: 10px;
-  
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
+	margin-block-start: 3em;
+	margin-block-end: 0em;
 }
 
 nav > ul > a {
-  color:white;
-  font-size: 1.5rem;
-  
+	grid-row: 1;
+}
+
+nav > ul > a {
+	color: white;
+	font-size: 1.5rem;
 }
 
 nav > ul > a:hover {
-  background-color: rgb(122, 126, 192);
+	background-color: rgb(71, 72, 75);
 }
 
 /* Home */
 .main {
-  margin: 10%;
-  
+	margin: 1% 5%;
+	display: flex;
+	justify-content: center;
 }
 
-.main > h2 {
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 600;
-  font-size: 2rem;
+h2 {
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 600;
+	font-size: 3rem;
+	background-color: crimson;
+  	border-radius: 5px;;
+  	padding: 10px 10px;
 }
+
+.main-tag {
+	position: absolute;
+	z-index: 1;
+	margin: 10px 20px;
+	/* background-color: rgba(22, 4, 4, 0.9); */
+	margin-top: 15%;
+	color: white;
+	padding: 20px;
+}
+
+.display {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	/* grid-auto-rows: minmax(150px, auto); */
+	grid-gap: 20px;
+	width: 60%;
+	height: 100%;
+	/* height: 300px; */
+	grid-auto-flow: dense;
+	position: relative;
+	opacity: 0.6;
+	margin: 0 auto;
+	/* transform: rotateZ(45deg) */
+}
+
+.display-book, .book-cover {
+	object-fit: cover;
+	/* transition-timing-function: ease-in;
+	transition: 1s; */
+	width: 100%;
+	height: 100%;
+	-webkit-animation: expand 1s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: expand 1s; /* Firefox < 16 */
+	-ms-animation: expand 1s; /* Internet Explorer */
+	-o-animation: expand 1s; /* Opera < 12.1 */
+	animation: expand 1s;
+}
+
+.display-book:hover {
+	opacity: 1;
+}
+
+@keyframes expand {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes expand {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+#book-4,
+#book-8,
+#book-12,
+#book-14 {
+	grid-row: span 2;
+	grid-column: span 2;
+}
+
+#book-2,
+#book-5,
+#book-9 
+#book-13{
+	grid-row: span 2;
+	grid-column: span 2;
+}
+
+#book-3 {
+	grid-row: span 2;
+	grid-column: span 2;
+}
+
+#book-7 {
+	grid-row: span 3;
+	grid-column: span 3;
+}
+
 
 button {
-  background-color: transparent;
-  color:rgb(80, 82, 133);
-  border: 2px solid rgb(80, 82, 133);
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: rgb(80, 82, 133);
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 600;
-  font-size: 1.5em;
+	color:white;
+	background-color: rgb(79, 82, 182);
+	border: 2px solid rgb(79, 82, 182);
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 600;
+	font-size: 1.5em;
 }
 
 button:hover {
-  background-color:rgb(80, 82, 133);
-  border: none;
-  border: 2px solid rgb(80, 82, 133);
-  color:white;
+	background-color: rgb(5, 6, 29);
+	border: 2px solid rgb(79, 82, 182);
+	color: rgb(229, 229, 236);
+  cursor: pointer;
 }
 
 /* Genres List */
+.featured-list {
+	margin: 0;
+	background-color: transparent;
+	text-align: left;
+	border-bottom: 2px solid crimson;
+	color: white;
+	border-radius:0;
+	font-size: 1.5rem;
+}
+
 
 .genres-list {
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 20px;
-  align-items: center;
-  font-size: 2rem;
-  margin: 10%;
-  
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 20px;
+	align-items: center;
+	font-size: 2rem;
+	margin: 0 10%;
 }
 
-.genres-list > a  {
-  color: black;
-
+.genres-list > a {
+	color: black;
 }
-
 
 .genre {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(142, 169, 218);
-  color:white;
-  height: 80px;
-  padding: 10px;
-  border-radius: 10px;
+	/* grid-row: 1 / span 2; */
+	display: grid;
+	grid-template-columns: 1fr, 1fr;
+	grid-template-rows: repeat(5, 1fr);
+	background-color: rgb(151, 47, 68);
+	border: 1px solid rgb(151, 47, 68);
+	color: white;
+	height: 180px;
+	/* padding: 10px; */
+	font-size: 70%;
+	border-radius:3px;
+	font-weight: 600;
 }
 
+.featured-covers {
+	object-fit: contain;
+	height:80%;
+	width: 90%;
+	grid-row: 1 / span 5;
+	grid-column: 2/ span 1;
+	display: flex;
+	margin:10px;
+}
+
+.genre-name {
+	grid-row: 1 / span 2;
+	margin: 20px;
+	text-align: left;
+}
+
+#feature-img {
+	margin: 5px;
+}
+
+
 .genre:hover {
-  background-color:transparent;
-  color: rgb(80, 82, 133);
-  border: 2px solid rgb(80, 82, 133);
+	/* position: absolute; */
+	background-color: transparent;
+	color: crimson;
+	border: 1px solid crimson;
 }
 
 /* Best Sellers Page */
 
 .best-sellers {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 70px 50px;
+	width: 80%;
+	margin: 0 auto;
 }
 
-
 .book-container {
-  /* border: 1px solid rgba(182, 177, 177, 0.933); */
-  
+	height: 75%;
+	width: 100%;
+	margin: 2%;
 }
 
 .book-cover {
-  object-fit:cover;
-  width: 60%;
-  height:50%;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
 }
 
 .book-info {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
+	box-shadow: 1px 2px 5px rgb(39, 38, 38);
+	color: white;
+	height: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+	font-family: 'Montserrat', sans-serif;
+	font-size: 80%;
+	padding: 10px 0;
+}
 
+.title,
+.author,
+.description {
+	margin: 2px;
+  line-height: 1.5;
 }
 
 a {
-  text-decoration: none;
-
+	text-decoration: none;
 }
 li {
-  list-style: none;
+	list-style: none;
 }
 
 /* Book Details */
 .details-container {
-  display:grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr;
-  width: 90vw;
-  line-height: 1.5;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr 2fr;
+	/* width: 70%; */
+	line-height: 1.5;
+	/* border:1px solid crimson; */
+	margin: 0 auto;
 }
 
 .details {
-  text-align: left;
-  max-width: 700px;
-  min-width: 300px;
-  border: 2px solid rgb(80, 82, 133);
-  border-radius: 10px;
-  padding: 10px 50px;
-  margin: 5% 0;
+	color:white;
+	text-align: left;
+	max-width: 700px;
+	min-width: 300px;
+	/* border: 2px solid rgb(80, 82, 133); */
+	border-radius: 10px;
+	padding: 10px 50px;
+	margin: 5% 2%;
 }
 
 .details-cover {
-  object-fit: cover;
-  width: 300px;
-  height:max-content;
-  margin: 5%;
+	padding: 0;
+	margin:0;
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	
+	
+}
+
+.details-cover > .book-cover {
+	object-fit: contain;
+	max-height: 70%;
+	width:70%;
 }
 
 .about {
-  border: 2px solid rgb(80, 82, 133);
-  margin: 5% 20%;
-  padding: 0 5% 5%;
-  font-size: 1.5rem;
-  border-radius: 10px;
+	border: 2px solid rgb(80, 82, 133);
+	margin: 5% 20%;
+	padding: 0 5% 5%;
+	font-size: 1.5rem;
+	border-radius: 10px;
+	color:white;
+	height: 300px;
+}
+
+.about > h2 {
+	font-size: 2rem;
+	background-color: transparent;
+	color: rgb(182, 49, 75);
 }
 
 .about > p {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
+@media (max-width: 900px) {
+	.best-sellers {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+	}
 
+	.genre {
+		font-size: 60%;
+	}
+}
 
+@media (max-width: 700px) {
+	.best-sellers {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+	}
 
+	.book-container {
+		width: 90%;
+	}
 
+	nav {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+	}
+}
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }

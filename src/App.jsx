@@ -24,7 +24,7 @@ function App() {
 			.get(genre_api)
 			.then((res) => {
 				console.log(res.data.results);
-				setDate(res.data.results['bestsellers_date'])
+				setDate(res.data.results['bestsellers_date']);
 				setGenres(res.data.results.lists.splice(0, 8));
 			})
 			.catch((err) => console.log(err));

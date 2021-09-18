@@ -10,8 +10,8 @@ function BestSellerCard({book}) {
 					<img className='book-cover' src={book['book_image']}></img>
 					<div className='book-info'>
 						<h3 className='title'>{book.title}</h3>
-						<h5>{book.author}</h5>
-						<p>{book.description}</p>
+						<h5 className='author'>{book.author}</h5>
+						<p className='description'>{book.description}</p>
 					</div>
 				</div>
 			</Link>
