@@ -4,6 +4,7 @@
 html, body {
 	height: 100%;
 	background-color: rgb(22, 22, 26);
+	/* background-color: rgb(253, 247, 247); */
 }
 
 .App {
@@ -67,8 +68,8 @@ h2 {
 	font-weight: 600;
 	font-size: 3rem;
 	background-color: crimson;
-  border-radius: 5px;;
-  padding: 10px 10px;
+  	border-radius: 5px;;
+  	padding: 10px 10px;
 }
 
 .main-tag {
@@ -88,16 +89,16 @@ h2 {
 	/* grid-auto-rows: minmax(150px, auto); */
 	grid-gap: 20px;
 	width: 60%;
-	height: 50%;
+	height: 100%;
 	/* height: 300px; */
 	grid-auto-flow: dense;
 	position: relative;
-	opacity: 0.5;
+	opacity: 0.6;
 	margin: 0 auto;
 	/* transform: rotateZ(45deg) */
 }
 
-.display-book {
+.display-book, .book-cover {
 	object-fit: cover;
 	/* transition-timing-function: ease-in;
 	transition: 1s; */
@@ -181,7 +182,7 @@ button:hover {
 
 .genres-list {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 	gap: 20px;
 	align-items: center;
@@ -198,20 +199,21 @@ button:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgb(131, 144, 168);
-	border: 1px solid rgb(131, 144, 168);
+	background-color: rgb(151, 47, 68);
+	border: 1px solid rgb(151, 47, 68);
 	color: white;
 	height: 80px;
 	padding: 10px;
-	border-radius: 10px;
 	font-size: 80%;
+	border-radius:3px;
+	font-weight: 600;
 }
 
 .genre:hover {
 	/* position: absolute; */
 	background-color: transparent;
-	color: rgb(131, 144, 168);
-	border: 1px solid rgb(131, 144, 168);
+	color: crimson;
+	border: 1px solid crimson;
 }
 
 /* Best Sellers Page */
@@ -228,7 +230,6 @@ button:hover {
 .book-container {
 	height: 75%;
 	width: 100%;
-	box-shadow: 5px 5px 10px rgb(109, 105, 105);
 	margin: 2%;
 }
 
@@ -239,7 +240,7 @@ button:hover {
 }
 
 .book-info {
-	box-shadow: 5px 5px 10px rgb(109, 105, 105);
+	box-shadow: 1px 2px 5px rgb(39, 38, 38);
 	color: white;
 	height: 30%;
 	display: flex;
@@ -270,25 +271,37 @@ li {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr 2fr;
-	width: 90vw;
+	/* width: 70%; */
 	line-height: 1.5;
+	/* border:1px solid crimson; */
+	margin: 0 auto;
 }
 
 .details {
+	color:white;
 	text-align: left;
 	max-width: 700px;
 	min-width: 300px;
-	border: 2px solid rgb(80, 82, 133);
+	/* border: 2px solid rgb(80, 82, 133); */
 	border-radius: 10px;
 	padding: 10px 50px;
-	margin: 5% 0;
+	margin: 5% 2%;
 }
 
 .details-cover {
-	object-fit: cover;
-	width: 300px;
-	height: max-content;
-	margin: 5%;
+	padding: 0;
+	margin:0;
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	
+	
+}
+
+.details-cover > .book-cover {
+	object-fit: contain;
+	max-height: 70%;
+	width:70%;
 }
 
 .about {
@@ -297,6 +310,14 @@ li {
 	padding: 0 5% 5%;
 	font-size: 1.5rem;
 	border-radius: 10px;
+	color:white;
+	height: 300px;
+}
+
+.about > h2 {
+	font-size: 2rem;
+	background-color: transparent;
+	color: rgb(182, 49, 75);
 }
 
 .about > p {
