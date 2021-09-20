@@ -10,6 +10,7 @@ import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import MyReads from './components/MyReads/MyReads';
+import MyReviews from './components/MyReads/MyReviews';
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
 // const api_key = process.env.REACT_APP_NYT_API;
@@ -19,6 +20,7 @@ function App() {
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
 	const [myReads, setMyReads] = useState([]);
+	const [myReviews, setMyReviews] = useState([])
 
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
@@ -71,6 +73,9 @@ function App() {
 				</Route>
 				<Route exact path='/best-sellers/genre/:isbn'>
 					<BookDetails />
+				</Route>
+				<Route exact path='/my-reads/:isbn'>
+					<MyReviews/>
 				</Route>
 			</DataContext.Provider>
 
