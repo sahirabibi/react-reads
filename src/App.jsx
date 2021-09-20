@@ -9,6 +9,7 @@ import { DataContext } from './DataContext';
 import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import MyReads from './components/MyReads/MyReads';
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
 // const api_key = process.env.REACT_APP_NYT_API;
@@ -17,6 +18,7 @@ const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-
 function App() {
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
+	const [myReads, setMyReads] = useState([]);
 
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
@@ -30,14 +32,31 @@ function App() {
 			.catch((err) => console.log(err));
 	}, []);
 
-	// API call to get data for NYT BestSellers
+	// function to update MyReads()
+	function updateMyReads(isbn) {
+		const targetRead = `https://openlibrary.org/isbn/${isbn}.json`;
+		console.log('Updating read...');
+		axios
+			.get(targetRead)
+			.then((res) => setMyReads([...myReads, res.data]))
+			.catch((err) => console.log(err));
+	}
 
 	return (
 		<div className='App'>
 			{/* Header provides navigation of side*/}
 			<Header />
 			{/* Pass BestSeller and Genre List Data to relevant components */}
-			<DataContext.Provider value={{ genres, setGenres, date, setDate }}>
+			<DataContext.Provider
+				value={{
+					genres,
+					setGenres,
+					date,
+					setDate,
+					myReads,
+					setMyReads,
+					updateMyReads,
+				}}>
 				<Route exact path='/'>
 					<Home />
 				</Route>
@@ -47,10 +66,14 @@ function App() {
 				<Route exact path='/best-sellers/:name'>
 					<BestSellers />
 				</Route>
+				<Route exact path='/my-reads'>
+					<MyReads />
+				</Route>
+				<Route exact path='/best-sellers/genre/:isbn'>
+					<BookDetails />
+				</Route>
 			</DataContext.Provider>
-			<Route exact path='/best-sellers/genre/:isbn'>
-				<BookDetails />
-			</Route>
+
 			<Route exact path='/about'>
 				<About />
 			</Route>

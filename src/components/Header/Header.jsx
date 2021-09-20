@@ -5,9 +5,8 @@ function Header(props) {
 
     return (
 			<header>
-				
 				<h1>Reads</h1>
-				
+
 				<nav>
 					<ul>
 						<Link to='/'>
@@ -15,6 +14,9 @@ function Header(props) {
 						</Link>
 						<Link to='/best-sellers'>
 							<li>Featured List</li>
+						</Link>
+						<Link to='/my-reads'>
+							<li>My Reads</li>
 						</Link>
 						<Link to='/about'>
 							<li>About</li>
