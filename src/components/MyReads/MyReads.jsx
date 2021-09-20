@@ -7,8 +7,10 @@ import { Route} from 'react-router-dom'
 
 function MyReads(props) {
 	// when add button is clicked, book should be added to a state component that should be updated and sent down and rendered
-	const { myReads } = useContext(DataContext);
+	const { myReads, myReviews} = useContext(DataContext);
 	const isbn = '' // filter books for specific book 
+	// grab the current review if available
+	// const currentReview = myReviews.filter(review => review.isbn[10][0] === '')
 
 	// grab cover using isbn data
 	useEffect(() => {
@@ -32,8 +34,28 @@ function MyReads(props) {
 				return (
 					<ul className='my-reads-list'>
 						<Link key={read.isbn_10[0]} to={`/my-reads/${read.isbn_10[0]}`}>
-							<li className='tbr-title'>{read.title}</li>
-							<li>{read.author}</li>
+							<div className='reads-container'>
+								<img
+									src={`http://covers.openlibrary.org/b/isbn/${read.isbn_10[0]}.jpg`}
+									alt='book-cover'
+								/>
+								<li className='tbr-title'>{read.title}</li>
+								<li>{read.author}</li>
+								<li>Page Count: {read.number_of_pages}</li>
+								<h5>Review: </h5>
+								{myReviews.map((review) =>
+									review.isbn === read.isbn_10[0] ? (
+										<p>{review.review.substring(0, 250)}</p>
+									) : 
+										<button>Add Review</button>
+								)}
+								<p>Rating: </p>
+								{myReviews.map((review) =>
+									review.isbn === read.isbn_10[0] ? (
+										<p>{review.rating}</p>
+									) : ''
+								)}
+							</div>
 						</Link>
 					</ul>
 				);

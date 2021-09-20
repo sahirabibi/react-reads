@@ -58,6 +58,8 @@ function App() {
 					myReads,
 					setMyReads,
 					updateMyReads,
+					myReviews,
+					setMyReviews
 				}}>
 				<Route exact path='/'>
 					<Home />

@@ -7,9 +7,11 @@ function MyReviews(props) {
 	// add a review for the selected book
 	// display book and beneath it display the review
 	const { isbn } = useParams();
-	const { myReads, setMyReads, MyReviews, setMyReviews } = useContext(DataContext);
+	const { myReads, setMyReads, myReviews, setMyReviews } = useContext(DataContext);
     const currentRead = myReads.filter((read) => read.isbn_10[0] === isbn);
+    console.log(currentRead)
 	const [myReview, setMyReview] = useState({
+        isbn: currentRead[0].isbn_10[0],
 		title: '',
 		review: '',
 		rating: null,
@@ -21,12 +23,12 @@ function MyReviews(props) {
 	function handleSubmit(event) {
         // update the current reviews with the new review 
         event.preventDefault();
-        setMyReviews([...MyReviews, myReview])
+        setMyReviews([...myReviews, myReview])
     }
 
 
 	function handleChange(event) {
-		setMyReview({ ...myReview, [event.target.id]: event.target.value });
+		setMyReview({...myReview, [event.target.id]: event.target.value });
 	}
 
 	return (
@@ -41,6 +43,7 @@ function MyReviews(props) {
 				<input type='text' id='review' onChange={handleChange} />
 				<label htmlFor='rating'>Rating</label>
 				<input type='text' id='rating' onChange={handleChange} />
+                <button>Submit</button>
 			</form>
 		</div>
 	);
