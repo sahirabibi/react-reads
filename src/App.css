@@ -257,8 +257,8 @@ button:hover {
 }
 
 .book-container {
-	height: 65%;
-	width: 65%;
+	height: 75%;
+	width: 75%;
 	margin: 2%;
 	transition: transform 0.5s;
 }
