@@ -6,7 +6,7 @@ import BestSellers from './components/BestSellers/BestSellers';
 import BookDetails from './components/BookDetails/BookDetails';
 import GenreList from './components/GenreList/GenreList';
 import MyReads from './components/MyReads/MyReads';
-import MyReviews from './components/MyReads/MyReviews';
+import ReviewForm from './components/MyReads/ReviewForm';
 import SearchResults from './components/Search/SearchResults';
 import Search from './components/Header/Search';
 import { DataContext } from './DataContext';
@@ -21,9 +21,13 @@ const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-
 function App() {
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
-	const [myReads, setMyReads] = useState([]);
-	const [myReviews, setMyReviews] = useState([]);
-	const [searchResults, setSearchResults] = useState([]);
+	const [myReads, setMyReads] = useState(
+		JSON.parse(localStorage.getItem('myReadingData')) || []
+	);
+
+	useEffect(() => {
+		localStorage.setItem('myReadingData', JSON.stringify(myReads));
+	}, [myReads]);
 
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
@@ -37,13 +41,29 @@ function App() {
 			.catch((err) => console.log(err));
 	}, []);
 
+	// const [myReviews, setMyReviews] = useState([]);
+	const [searchResults, setSearchResults] = useState([]);
+
 	// function to update MyReads()
 	function updateMyReads(isbn) {
 		const targetRead = `https://openlibrary.org/isbn/${isbn}.json`;
 		console.log('Updating read...');
 		axios
 			.get(targetRead)
-			.then((res) => setMyReads([...myReads, res.data]))
+			.then((res) => {
+				// clean up data
+				let newRead = {
+					title: res.data.title,
+					isbn_10: res.data.isbn_10[0],
+					author: res.data.authors,
+					publishers: res.data.publishers,
+					num_pages: res.data.number_of_pages,
+					reviewTitle: '',
+					review: '',
+					rating: '',
+				};
+				setMyReads([...myReads, newRead]);
+			})
 			.catch((err) => console.log(err));
 	}
 
@@ -61,8 +81,6 @@ function App() {
 					myReads,
 					setMyReads,
 					updateMyReads,
-					myReviews,
-					setMyReviews,
 					searchResults,
 					setSearchResults,
 				}}>
@@ -83,7 +101,7 @@ function App() {
 					<BookDetails />
 				</Route>
 				<Route exact path='/my-reads/:isbn'>
-					<MyReviews />
+					<ReviewForm />
 				</Route>
 				<Route exact path='/search/results/'>
 					<SearchResults />
