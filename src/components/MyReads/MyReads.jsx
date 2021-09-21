@@ -35,7 +35,7 @@ function MyReads(props) {
 								''
 							)}
 							{read.review ? (
-								<div>Snippet: {read.review.substring(0, 250)} </div>
+								<div>Snippet: {read.review.substring(0, 150)} </div>
 							) : (
 								''
 							)}

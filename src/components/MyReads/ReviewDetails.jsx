@@ -21,18 +21,18 @@ function ReviewDetails(props) {
 	}
 
 	return (
-		<div>
+		<div className='review-details'>
 			{currentRead.map((read) => (
-				<div className='tbr-item'>
+				<div className='review-card'>
 					<img
-						id='my-reads-cover'
+						id='review-details-cover'
 						src={`http://covers.openlibrary.org/b/isbn/${read.isbn_10}.jpg`}
 						alt='book-cover'
 					/>
-					<div className='review-details'>
+					<div className='review-details-container'>
 						<h3>{read.title}</h3>
 						<p>
-							Rating: {read.rating} <span></span>
+							Rating: {read.rating} <span> ⭐️ </span>
 						</p>
 						<p>Review Title: {read.reviewTitle}</p>
 						<p>Review: {read.review}</p>

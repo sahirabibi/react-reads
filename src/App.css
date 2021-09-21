@@ -437,7 +437,17 @@ li {
 
 .review-details {
 	color:white;
+	height:60%;
+	width:80%;
+	margin:50px auto;
 }
+
+#review-details-cover {
+	height:30%;
+	width:30%;
+}
+
+
 
 @media (max-width: 800px) {
 	.best-sellers {
