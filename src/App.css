@@ -428,6 +428,13 @@ li {
 	height: 50px;
 }
 
+.review-btn {
+	font-size: 70%;
+	height:max-content;
+	width:max-content;
+	margin: 20px 10px;
+}
+
 @media (max-width: 800px) {
 	.best-sellers {
 		grid-template-columns: 1fr;

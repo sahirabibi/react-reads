@@ -9,6 +9,7 @@ import MyReads from './components/MyReads/MyReads';
 import ReviewForm from './components/MyReads/ReviewForm';
 import SearchResults from './components/Search/SearchResults';
 import Search from './components/Header/Search';
+import ReviewDetails from './components/MyReads/ReviewDetails';
 import { DataContext } from './DataContext';
 import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
@@ -36,7 +37,7 @@ function App() {
 			.then((res) => {
 				console.log(res.data.results);
 				setDate(res.data.results['bestsellers_date']);
-				setGenres(res.data.results.lists.splice(0, 8));
+				setGenres(res.data.results.lists.splice(0, 7));
 			})
 			.catch((err) => console.log(err));
 	}, []);
@@ -105,6 +106,9 @@ function App() {
 				</Route>
 				<Route exact path='/search/results/'>
 					<SearchResults />
+				</Route>
+				<Route exact path='reviews/details/:isbn'>
+					<ReviewDetails/>
 				</Route>
 			</DataContext.Provider>
 
