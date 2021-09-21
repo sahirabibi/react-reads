@@ -107,8 +107,8 @@ function App() {
 				<Route exact path='/search/results/'>
 					<SearchResults />
 				</Route>
-				<Route exact path='reviews/details/:isbn'>
-					<ReviewDetails/>
+				<Route exact path='/reviews/details/:isbn'>
+					<ReviewDetails />
 				</Route>
 			</DataContext.Provider>
 

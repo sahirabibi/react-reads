@@ -35,11 +35,11 @@ function MyReads(props) {
 								''
 							)}
 							{read.review ? (
-								<div>Review: {read.review.substring(0, 250)} </div>
+								<div>Snippet: {read.review.substring(0, 250)} </div>
 							) : (
 								''
 							)}
-							{read.review && (
+							{read.review ? 
 								<div>
 									<Link to={`/my-reads/${read.isbn_10}`}>
 										<button className='review-btn'>Edit</button>
@@ -48,13 +48,12 @@ function MyReads(props) {
 										to={`/reviews/details/${read.isbn_10}`}>
 										<button className='review-btn'>See Review</button>
 									</Link>
-								</div>
-							)}
-							{!read.review && (
+								</div> :
 								<Link to={`/my-reads/${read.isbn_10}`}>
 									<button className='review-btn'>Add Review</button>
 								</Link>
-							)}
+
+							}
 						</div>
 					</div>
 				);
