@@ -32,18 +32,24 @@ function MyReviews(props) {
 	}
 
 	return (
-		<div>
+		<div className='tbr-item tbr-review'>
 			{currentRead.map((item) => (
 				<h2>{item.title}</h2>
 			))}
-			<form onSubmit={handleSubmit}>
+			<form className='review-form' onSubmit={handleSubmit}>
 				<label htmlFor='review-title'>Title</label>
 				<input type='text' id='title' onChange={handleChange} />
 				<label htmlFor='review'>Review</label>
-				<input type='text' id='review' onChange={handleChange} />
+				<textarea
+					class='longInput'
+					cols='30'
+					rows='10'
+					type='text'
+					id='review'
+					onChange={handleChange}></textarea>
 				<label htmlFor='rating'>Rating</label>
 				<input type='text' id='rating' onChange={handleChange} />
-                <button>Submit</button>
+				<button id='review-submit'>Submit</button>
 			</form>
 		</div>
 	);

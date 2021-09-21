@@ -1,19 +1,19 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios';
-import {useContext} from 'react'
 import { DataContext } from '../../DataContext';
 
 function Search(props) {
     // run a call to openLibrary and return book with selected format 
     // search can be with author, subject, title, isbn 
+    const { searchResults, setSearchResults } = useContext(DataContext);
+
     const [searchQuery, setSearchQuery] = useState({
         title: '',
         author:'',
         isbn: '',
         subject:'',
     })
-
 
     function handleChange(event) {
         // update searchQuery with users key-words 
@@ -27,17 +27,10 @@ function Search(props) {
         // submit to searchAPI and retrieve results 
         event.preventDefault();
         const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&isbn=${searchQuery.isbn}`;
+
         axios.get(searchURL)
-            .then(res => console.log(res.data.docs))
+            .then(res => setSearchResults([...res.data.docs.slice(0, 20)]))
             .catch(err => console.log(err));
-
-        // after retrieving results, set them inside of searchResults var
-        // render SearchResults page with search results 
-
-        // have add button on each search result, onClick=> searchResults.isbn[0] ==> 'isbn'
-        // OnClick call setMyReads();
-        // when user hits add, call a a function to grab this var and add it to 
-        // 
     };
     
 
@@ -79,3 +72,12 @@ function Search(props) {
 }
 
 export default Search;
+
+
+ // after retrieving results, set them inside of searchResults var
+        // render SearchResults page with search results 
+
+        // have add button on each search result, onClick=> searchResults.isbn[0] ==> 'isbn'
+        // OnClick call setMyReads();
+        // when user hits add, call a a function to grab this var and add it to 
+        // 

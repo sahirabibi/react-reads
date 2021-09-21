@@ -5,12 +5,14 @@ import About from './components/About/About';
 import BestSellers from './components/BestSellers/BestSellers';
 import BookDetails from './components/BookDetails/BookDetails';
 import GenreList from './components/GenreList/GenreList';
+import MyReads from './components/MyReads/MyReads';
+import MyReviews from './components/MyReads/MyReviews';
+import SearchResults from './components/Search/SearchResults';
+import Search from './components/Header/Search';
 import { DataContext } from './DataContext';
 import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import MyReads from './components/MyReads/MyReads';
-import MyReviews from './components/MyReads/MyReviews';
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
 // const api_key = process.env.REACT_APP_NYT_API;
@@ -20,7 +22,8 @@ function App() {
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
 	const [myReads, setMyReads] = useState([]);
-	const [myReviews, setMyReviews] = useState([])
+	const [myReviews, setMyReviews] = useState([]);
+	const [searchResults, setSearchResults] = useState([]);
 
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
@@ -47,7 +50,7 @@ function App() {
 	return (
 		<div className='App'>
 			{/* Header provides navigation of side*/}
-			<Header />
+
 			{/* Pass BestSeller and Genre List Data to relevant components */}
 			<DataContext.Provider
 				value={{
@@ -59,8 +62,11 @@ function App() {
 					setMyReads,
 					updateMyReads,
 					myReviews,
-					setMyReviews
+					setMyReviews,
+					searchResults,
+					setSearchResults,
 				}}>
+				<Header />
 				<Route exact path='/'>
 					<Home />
 				</Route>
@@ -77,7 +83,10 @@ function App() {
 					<BookDetails />
 				</Route>
 				<Route exact path='/my-reads/:isbn'>
-					<MyReviews/>
+					<MyReviews />
+				</Route>
+				<Route exact path='/search/results/'>
+					<SearchResults />
 				</Route>
 			</DataContext.Provider>
 

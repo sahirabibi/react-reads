@@ -376,11 +376,58 @@ li {
 }
 
 /* My Reads List */
+.tbr-item {
+	width:70%;
+	height: 100%;
+	margin: 0 auto;
+}
 
 .my-reads-list {
 	color: white;
-	font-size: 1.5rem;
+	font-size: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
 }
+
+#my-reads-cover {
+	object-fit: contain;
+	width: 70%;
+	height: 70%;
+	grid-row: 1 / span 1;
+	grid-column: 1 / span 1;
+}
+
+.reads-container {
+	grid-row: 1 / span 1;
+	grid-column: 2 / span 1;
+}
+
+/* review form */
+
+.review-form {
+	color:white;
+	font-size: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	width: 90%
+}
+
+
+#review {
+	height: 200px;
+	width: 500px;
+}
+
+#review-submit {
+	margin: 20px;
+	font-size: 1rem;
+	height: 50px;
+}
+
 @media (max-width: 800px) {
 	.best-sellers {
 		grid-template-columns: 1fr;
