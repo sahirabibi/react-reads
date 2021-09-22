@@ -25,9 +25,6 @@ function Header(props) {
 						</Link>
 					</ul>
 					<Search />
-					<Route exact path='/search/results/'>
-						<SearchResults />
-					</Route>
 				</nav>
 			</header>
 		);

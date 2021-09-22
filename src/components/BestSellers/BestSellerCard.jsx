@@ -6,11 +6,7 @@ import { DataContext} from '../../DataContext';
 function BestSellerCard({book}) {
 	const { updateMyReads } = useContext(DataContext);
     // return a styled card using in the props obj 
-    // Link to BookDetails attached on this card so on click can render book details page
-
-	// function handleClick(isbn) {
-	// 	updateMyReads(isbn);
-	// }
+   
     return (
 			<Link to={`/best-sellers/genre/${book.isbns[0].isbn10}`}>
 				<div className='book-container'>

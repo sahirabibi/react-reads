@@ -15,9 +15,7 @@ import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
-// const api_key = process.env.REACT_APP_NYT_API;
-const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
+
 
 function App() {
 	const [genres, setGenres] = useState([]);
@@ -32,6 +30,8 @@ function App() {
 	}, [myReads]);
 
 	// API call to get data array for NYT Genres on render
+	const api_key = process.env.REACT_APP_NYT_KEY;
+	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
 	useEffect(() => {
 		axios
 			.get(genre_api)
@@ -42,7 +42,6 @@ function App() {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-	
 
 	// function to update MyReads()
 	function updateMyReads(isbn) {
@@ -68,7 +67,7 @@ function App() {
 	}
 
 	function updateSearchResults(searchQuery) {
-		console.log('hello from updateSearch!')
+		console.log('hello from updateSearch!');
 		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
 
 		axios
@@ -77,7 +76,6 @@ function App() {
 				setSearchResults([...res.data.docs.slice(0, 20)]);
 			})
 			.catch((err) => console.log(err));
-
 	}
 
 	return (
@@ -97,6 +95,7 @@ function App() {
 					searchResults,
 					setSearchResults,
 					updateSearchResults,
+					api_key
 				}}>
 				<Header />
 				<Route exact path='/'>
@@ -119,6 +118,9 @@ function App() {
 				</Route>
 				<Route exact path='/reviews/details/:isbn'>
 					<ReviewDetails />
+				</Route>
+				<Route exact path='/search/results/'>
+					<SearchResults />
 				</Route>
 			</DataContext.Provider>
 
