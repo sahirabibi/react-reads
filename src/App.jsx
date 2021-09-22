@@ -65,8 +65,8 @@ function App() {
 	}
 
 	async function updateSearchResults(searchQuery) {
-		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
-
+		// const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
+		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}`
 		let data;
 
 		await axios
@@ -76,7 +76,6 @@ function App() {
 			})
 			.catch((err) => console.log(err));
 
-		console.log(data);
 		return setSearchResults([...data]);
 	}
 
