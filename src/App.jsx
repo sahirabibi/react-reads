@@ -11,11 +11,9 @@ import SearchResults from './components/Search/SearchResults';
 import Search from './components/Header/Search';
 import ReviewDetails from './components/MyReads/ReviewDetails';
 import { DataContext } from './DataContext';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-
-
 
 function App() {
 	const [genres, setGenres] = useState([]);
@@ -95,7 +93,7 @@ function App() {
 					searchResults,
 					setSearchResults,
 					updateSearchResults,
-					api_key
+					api_key,
 				}}>
 				<Header />
 				<Route exact path='/'>
@@ -119,11 +117,11 @@ function App() {
 				<Route exact path='/reviews/details/:isbn'>
 					<ReviewDetails />
 				</Route>
-				<Route exact path='/search/results/'>
+
+				<Route exact path='/search/results'>
 					<SearchResults />
 				</Route>
 			</DataContext.Provider>
-
 			<Route exact path='/about'>
 				<About />
 			</Route>

@@ -2,32 +2,38 @@ import React from 'react';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import {useHistory} from 'react-router-dom'
 
 function Search(props) {
 	// run a call to openLibrary and return book with selected format
 	// search can be with author, subject, title, isbn
 	const { searchResults, updateSearchResults } = useContext(DataContext);
+	const history = useHistory()
 
-	const [searchQuery, setSearchQuery] = useState({
+	const initialState = {
 		title: '',
 		author: '',
 		isbn: '',
-		subject: '',
-	});
+	};
+	const [searchQuery, setSearchQuery] = useState(initialState);
+	const [formattedQuery, setFormattedQuery] = useState(initialState)
 
 	function handleChange(event) {
 		// update searchQuery with users key-words
 		// split and add + on spaces
+		setSearchQuery({...searchQuery, [event.target.id] : event.target.value})
 		let rawStr = event.target.value;
 		let formattedStr = rawStr.replace(/\s+/g, '+').toLowerCase();
-		setSearchQuery({ ...searchQuery, [event.target.id]: formattedStr });
+		setFormattedQuery({ ...formattedQuery, [event.target.id]: formattedStr });
 	}
 
 	function handleSubmit(event) {
 		// submit to searchAPI and retrieve results
 		event.preventDefault();
-		updateSearchResults(searchQuery);
+		updateSearchResults(formattedQuery);
+		history.push('/search/results');
+		setSearchQuery(initialState)
 		
 	}
 
@@ -43,30 +49,26 @@ function Search(props) {
 						type='text'
 						id='title'
 						placeholder='title'
+						value={searchQuery.title}
 					/>
 					<input
 						onChange={handleChange}
 						type='text'
 						id='author'
 						placeholder='author'
+						value={searchQuery.author}
 					/>
 					<input
 						onChange={handleChange}
 						type='text'
 						id='isbn'
 						placeholder='isbn'
+						value={searchQuery.isbn}
 					/>
-					<input
-						onChange={handleChange}
-						type='text'
-						subject='isbn'
-						placeholder='subject'
-					/>
-					<Link to='/search/results'>
-						<input id='submit-btn' type='submit' onClick={handleSubmit}></input>
-					</Link>
+					<button id='submit-btn' type='submit' onClick={handleSubmit}>
+						Submit
+					</button>
 				</form>
-				{/* <button>Advanced Search</button> */}
 			</nav>
 		</div>
 	);
