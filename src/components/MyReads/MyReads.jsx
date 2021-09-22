@@ -29,31 +29,32 @@ function MyReads(props) {
 							<li>Page Count: {read.num_pages}</li>
 							{read.rating ? (
 								<div>
-									Rating: {read.rating} <span>⭐️</span>
+									<bold>Rating:</bold> {read.rating}
 								</div>
 							) : (
 								''
 							)}
 							{read.review ? (
-								<div>Snippet: {read.review.substring(0, 150)} </div>
+								<div>
+									<bold>Snippet:</bold> {read.review.substring(0, 150)}{' '}
+								</div>
 							) : (
 								''
 							)}
-							{read.review ? 
+							{read.review ? (
 								<div>
 									<Link to={`/my-reads/${read.isbn_10}`}>
 										<button className='review-btn'>Edit</button>
 									</Link>
-									<Link
-										to={`/reviews/details/${read.isbn_10}`}>
+									<Link to={`/reviews/details/${read.isbn_10}`}>
 										<button className='review-btn'>See Review</button>
 									</Link>
-								</div> :
+								</div>
+							) : (
 								<Link to={`/my-reads/${read.isbn_10}`}>
 									<button className='review-btn'>Add Review</button>
 								</Link>
-
-							}
+							)}
 						</div>
 					</div>
 				);

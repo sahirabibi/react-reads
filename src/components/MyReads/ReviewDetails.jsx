@@ -32,10 +32,14 @@ function ReviewDetails(props) {
 					<div className='review-details-container'>
 						<h3>{read.title}</h3>
 						<p>
-							Rating: {read.rating} <span> ⭐️ </span>
+							<strong>Rating:</strong> {read.rating}
 						</p>
-						<p>Review Title: {read.reviewTitle}</p>
-						<p>Review: {read.review}</p>
+						<p>
+							<strong>Title:</strong> {read.reviewTitle}
+						</p>
+						<p>
+							<strong>Review:</strong> <br/>{read.review}
+						</p>
 						<Link to={`/my-reads/${read.isbn_10}`}>
 							<button className='review-btn'>Edit</button>
 						</Link>

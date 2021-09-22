@@ -48,9 +48,17 @@ function MyReviews(props) {
 					rows='10'
 					type='text'
 					id='review'
+					// placeholder={currentRead[0].review}
 					onChange={handleChange}></textarea>
 				<label htmlFor='rating'>Rating</label>
-				<input type='text' id='rating' onChange={handleChange} />
+				{/* <input type='text' id='rating' onChange={handleChange} /> */}
+				<select onChange={handleChange} id='rating'>
+					<option id='rating'>⭐️</option>
+					<option id='rating'>⭐️ ⭐️ </option>
+					<option id='rating'>⭐️ ⭐️ ⭐️</option>
+					<option id='rating'>⭐️ ⭐️ ⭐️ ⭐️</option>
+					<option id='rating'>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</option>
+				</select>
 				<button id='review-submit'>Submit</button>
 			</form>
 		</div>
