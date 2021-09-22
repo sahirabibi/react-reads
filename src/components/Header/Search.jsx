@@ -41,7 +41,7 @@ function Search(props) {
 		<div>
 			<nav className='search-nav'>
 				<form className='search-form' action=''>
-					<label className='search' htmlFor='search'>
+					<label className='search-label' htmlFor='search'>
 						Search
 					</label>
 					<input
