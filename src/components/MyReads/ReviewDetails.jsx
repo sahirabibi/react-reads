@@ -8,11 +8,10 @@ function ReviewDetails(props) {
 	const [currentRead, setCurrentRead] = useState();
 	const { isbn } = useParams();
 	const { myReads } = useContext(DataContext);
-    console.log('hello from review-details')
+
 
 	useEffect(() => {
 		let targetRead = myReads.filter((read) => read.isbn_10 === isbn);
-		console.log(targetRead);
 		setCurrentRead([...targetRead]);
 	}, []);
 
