@@ -34,7 +34,6 @@ function App() {
 		axios
 			.get(genre_api)
 			.then((res) => {
-				console.log(res.data.results);
 				setDate(res.data.results['bestsellers_date']);
 				setGenres(res.data.results.lists.splice(0, 7));
 			})
@@ -44,7 +43,6 @@ function App() {
 	// function to update MyReads()
 	function updateMyReads(isbn) {
 		const targetRead = `https://openlibrary.org/isbn/${isbn}.json`;
-		console.log('Updating read...');
 		axios
 			.get(targetRead)
 			.then((res) => {
@@ -65,8 +63,8 @@ function App() {
 	}
 
 	async function updateSearchResults(searchQuery) {
-		// const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
-		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}`
+		const searchURL = `https://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
+
 		let data;
 
 		await axios

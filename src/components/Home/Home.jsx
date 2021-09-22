@@ -21,7 +21,6 @@ function Home(props) {
 				bookURLS.push(newDisplay[i][j]['book_image'])
 			}
 		}
-		console.log(bookURLS)
 		setDisplay([display, ...bookURLS]);
 	}, [genres]);
 

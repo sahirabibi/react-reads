@@ -14,7 +14,6 @@ function BestSellers(props) {
 	const { date, genres, api_key } = useContext(DataContext);
 	const [bestSellers, setBestSellers] = useState();
 	const { name } = useParams();
-	console.log(genres)
 	const currentGenre = genres.filter(genre => genre.list_name_encoded === name);
 	
 
