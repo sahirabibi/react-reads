@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
+import SearchResults from '../Search/SearchResults';
 import Search from './Search';
 
 function Header(props) {
@@ -23,7 +24,10 @@ function Header(props) {
 							<li>About</li>
 						</Link>
 					</ul>
-					<Search/>
+					<Search />
+					<Route exact path='/search/results/'>
+						<SearchResults />
+					</Route>
 				</nav>
 			</header>
 		);

@@ -96,7 +96,7 @@ function App() {
 					updateMyReads,
 					searchResults,
 					setSearchResults,
-					updateSearchResults
+					updateSearchResults,
 				}}>
 				<Header />
 				<Route exact path='/'>
@@ -116,9 +116,6 @@ function App() {
 				</Route>
 				<Route exact path='/my-reads/:isbn'>
 					<ReviewForm />
-				</Route>
-				<Route exact path='/search/results/'>
-					<SearchResults />
 				</Route>
 				<Route exact path='/reviews/details/:isbn'>
 					<ReviewDetails />

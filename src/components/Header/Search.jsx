@@ -62,7 +62,7 @@ function Search(props) {
 						subject='isbn'
 						placeholder='subject'
 					/>
-					<Link to={'/search/results'}>
+					<Link to='/search/results'>
 						<input id='submit-btn' type='submit' onClick={handleSubmit}></input>
 					</Link>
 				</form>

@@ -14,7 +14,7 @@ function SearchResults(props) {
     }
 
 	return (
-		<div className='search-result-item'>
+            <div className='search-result-item'>
 			<h3>Showing Results</h3>
 			{searchResults.map((result) => {
 				return (
@@ -27,13 +27,12 @@ function SearchResults(props) {
 						<div className='search-details'>
 							<p>Title: {result.title}</p>
 							<p>Author: {result.author_name[0]}</p>
-							<p>Subjects:</p>
-							{/* <ul>
-						{' '}
-						{result.subject.map((sub) => (
-							<li>{sub}</li>
-						))}
-					</ul> */}
+							<ul id='subject-list'>
+								{result.subject
+									? result.subject.slice(0, 1).map((sub) => <li>Subject: {sub}</li>)
+									: 'no subjects to display'}
+							</ul>
+
 							<button
 								id='add-search-item'
 								onClick={() => updateMyReads(result.isbn[0])}>
@@ -49,6 +48,7 @@ function SearchResults(props) {
 				);
 			})}
 		</div>
+		
 	);
 }
 

@@ -434,6 +434,11 @@ li {
 	padding: 2%;
 }
 
+.review-form > * {
+	border-radius: 5px;
+	border:none;
+}
+
 #review {
 	height: 200px;
 	width: 500px;
@@ -531,6 +536,12 @@ li {
 .search-details {
 	text-align: left;
 
+}
+
+.subject-list {
+	display: flex;
+	flex-wrap: wrap;
+	
 }
 
 @media (max-width: 800px) {
