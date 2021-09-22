@@ -50,10 +50,10 @@ function MyReads(props) {
 							</button>
 						)}
 						<div className='reads-container'>
-							<li className='tbr-title'>
+							<p className='tbr-title'>
 								<strong>{read.title}</strong>
-							</li>
-							<li>Page Count: {read.num_pages}</li>
+							</p>
+							<p>Page Count: {read.num_pages}</p>
 							{read.rating ? (
 								<div>
 									<strong>Rating:</strong> {read.rating}

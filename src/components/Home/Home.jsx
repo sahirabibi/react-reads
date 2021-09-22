@@ -18,6 +18,7 @@ function Home(props) {
 			}
 		}
 		setDisplay([display, ...bookURLS]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [genres]);
 
 

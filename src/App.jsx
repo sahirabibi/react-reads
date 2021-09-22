@@ -29,7 +29,7 @@ function App() {
 	// API call to get data array for NYT Genres on render
 	const api_key = process.env.REACT_APP_NYT_KEY;
 	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
-	
+
 	useEffect(() => {
 		axios
 			.get(genre_api)
@@ -38,6 +38,7 @@ function App() {
 				setGenres(res.data.results.lists.splice(0, 7));
 			})
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	// function to update MyReads()
