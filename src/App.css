@@ -474,6 +474,7 @@ li {
 	padding: 2%;
 	background-color: rgba(32, 32, 56, 0.5);
 	border-radius: 3px;
+	width: 100vw;
 }
 
 .search-form > * {
@@ -481,6 +482,10 @@ li {
 	border: none;
 	border-radius: 5px;
 	padding: 7px;
+}
+
+.search-label {
+	color:white;
 }
 
 #submit-btn, #add-search-item, #view-search-btn  {
