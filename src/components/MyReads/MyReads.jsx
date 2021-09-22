@@ -13,9 +13,14 @@ function MyReads(props) {
 		// update reading progress
 		let tempReads = [...myReads];
 		let index = tempReads.findIndex((read) => read.isbn_10 === isbn);
-		console.log(tempReads[index])
 		tempReads[index].inProgress = !tempReads[index].inProgress;
 		setMyReads([...tempReads]);
+	}
+
+	function deleteRead(index) {
+		let tempReads = [...myReads];
+		tempReads.splice(index, 1)
+		setMyReads([...tempReads])
 	}
 
 	if (myReads.length < 1) {
@@ -25,7 +30,7 @@ function MyReads(props) {
 	return (
 		<div className='tbr-item'>
 			<h2>My Reads and Reviews</h2>
-			{myReads.map((read) => {
+			{myReads.map((read, index) => {
 				return (
 					<div className='my-reads-list'>
 						<img
@@ -34,11 +39,15 @@ function MyReads(props) {
 							alt='book-cover'
 						/>
 						{read.inProgress ? (
-							<button onClick={() => updateProgress(read.isbn_10)} id='inProgress'>
+							<button
+								onClick={() => updateProgress(read.isbn_10)}
+								id='inProgress'>
 								In Progress
 							</button>
 						) : (
-							<button onClick={() => updateProgress()} id='completed'>
+							<button
+								onClick={() => updateProgress(read.isbn_10)}
+								id='completed'>
 								Completed
 							</button>
 						)}
@@ -78,6 +87,7 @@ function MyReads(props) {
 									<button className='review-btn'>Add Review</button>
 								</Link>
 							)}
+							<button id='delete' onClick={() => deleteRead(index)}>Delete</button>
 						</div>
 					</div>
 				);
