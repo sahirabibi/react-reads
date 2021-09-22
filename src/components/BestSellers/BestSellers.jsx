@@ -18,6 +18,9 @@ function BestSellers(props) {
 	const { date, genres } = useContext(DataContext);
 	const [bestSellers, setBestSellers] = useState();
 	const { name } = useParams();
+	console.log(genres)
+	const currentGenre = genres.filter(genre => genre.list_name_encoded === name);
+	
 
 
 	// api url by genre title and date
@@ -37,7 +40,7 @@ function BestSellers(props) {
 
 	return (
 		<div>
-			<h2>Top 15 Books </h2>
+			<h2>Best Sellers in {currentGenre[0].list_name} </h2>
 			<div className='best-sellers'>
 				{bestSellers.map((book) => (
 					<li>

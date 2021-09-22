@@ -1,9 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import {useContext} from 'react'
+import { DataContext} from '../../DataContext';
 
 function BestSellerCard({book}) {
+	const { updateMyReads } = useContext(DataContext);
     // return a styled card using in the props obj 
     // Link to BookDetails attached on this card so on click can render book details page
+
+	// function handleClick(isbn) {
+	// 	updateMyReads(isbn);
+	// }
     return (
 			<Link to={`/best-sellers/genre/${book.isbns[0].isbn10}`}>
 				<div className='book-container'>
@@ -12,6 +19,9 @@ function BestSellerCard({book}) {
 						<h3 className='title'>{book.title}</h3>
 						<h5 className='author'>{book.author}</h5>
 						<p className='description'>{book.description}</p>
+						{/* <button id='add-book' onClick={() => handleClick(isbn)}>
+							Add
+						</button>  */}
 					</div>
 				</div>
 			</Link>

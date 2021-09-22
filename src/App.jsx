@@ -5,6 +5,11 @@ import About from './components/About/About';
 import BestSellers from './components/BestSellers/BestSellers';
 import BookDetails from './components/BookDetails/BookDetails';
 import GenreList from './components/GenreList/GenreList';
+import MyReads from './components/MyReads/MyReads';
+import ReviewForm from './components/MyReads/ReviewForm';
+import SearchResults from './components/Search/SearchResults';
+import Search from './components/Header/Search';
+import ReviewDetails from './components/MyReads/ReviewDetails';
 import { DataContext } from './DataContext';
 import { Link, Route } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
@@ -17,6 +22,14 @@ const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-
 function App() {
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
+	const [myReads, setMyReads] = useState(
+		JSON.parse(localStorage.getItem('myReadingData')) || []
+	);
+	const [searchResults, setSearchResults] = useState([]);
+
+	useEffect(() => {
+		localStorage.setItem('myReadingData', JSON.stringify(myReads));
+	}, [myReads]);
 
 	// API call to get data array for NYT Genres on render
 	useEffect(() => {
@@ -25,19 +38,67 @@ function App() {
 			.then((res) => {
 				console.log(res.data.results);
 				setDate(res.data.results['bestsellers_date']);
-				setGenres(res.data.results.lists.splice(0, 8));
+				setGenres(res.data.results.lists.splice(0, 7));
 			})
 			.catch((err) => console.log(err));
 	}, []);
+	
 
-	// API call to get data for NYT BestSellers
+	// function to update MyReads()
+	function updateMyReads(isbn) {
+		const targetRead = `https://openlibrary.org/isbn/${isbn}.json`;
+		console.log('Updating read...');
+		axios
+			.get(targetRead)
+			.then((res) => {
+				// clean up data
+				let newRead = {
+					title: res.data.title,
+					isbn_10: res.data.isbn_10[0],
+					author: res.data.authors,
+					publishers: res.data.publishers,
+					num_pages: res.data.number_of_pages,
+					reviewTitle: '',
+					review: '',
+					rating: '',
+				};
+				setMyReads([...myReads, newRead]);
+			})
+			.catch((err) => console.log(err));
+	}
+
+	function updateSearchResults(searchQuery) {
+		console.log('hello from updateSearch!')
+		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
+
+		axios
+			.get(searchURL)
+			.then((res) => {
+				setSearchResults([...res.data.docs.slice(0, 20)]);
+			})
+			.catch((err) => console.log(err));
+
+	}
 
 	return (
 		<div className='App'>
 			{/* Header provides navigation of side*/}
-			<Header />
+
 			{/* Pass BestSeller and Genre List Data to relevant components */}
-			<DataContext.Provider value={{ genres, setGenres, date, setDate }}>
+			<DataContext.Provider
+				value={{
+					genres,
+					setGenres,
+					date,
+					setDate,
+					myReads,
+					setMyReads,
+					updateMyReads,
+					searchResults,
+					setSearchResults,
+					updateSearchResults,
+				}}>
+				<Header />
 				<Route exact path='/'>
 					<Home />
 				</Route>
@@ -47,10 +108,20 @@ function App() {
 				<Route exact path='/best-sellers/:name'>
 					<BestSellers />
 				</Route>
+				<Route exact path='/my-reads'>
+					<MyReads />
+				</Route>
+				<Route exact path='/best-sellers/genre/:isbn'>
+					<BookDetails />
+				</Route>
+				<Route exact path='/my-reads/:isbn'>
+					<ReviewForm />
+				</Route>
+				<Route exact path='/reviews/details/:isbn'>
+					<ReviewDetails />
+				</Route>
 			</DataContext.Provider>
-			<Route exact path='/best-sellers/genre/:isbn'>
-				<BookDetails />
-			</Route>
+
 			<Route exact path='/about'>
 				<About />
 			</Route>

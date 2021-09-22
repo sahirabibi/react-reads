@@ -1,11 +1,13 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { DataContext } from '../../DataContext';
 
 const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
 
 function BookDetails() {
+	const { updateMyReads } =  useContext(DataContext)
 	const { isbn } = useParams();
 	const [bookDetails, setBookDetails] = useState();
 	const [review, setReview] = useState();
@@ -21,6 +23,10 @@ function BookDetails() {
 			.catch((err) => console.log(err));
 	}, []);
 
+	function handleClick(isbn) {
+		updateMyReads(isbn);
+	}
+
 	if (!bookDetails) {
 		return <h2>Loading Book...</h2>;
 	}
@@ -28,7 +34,12 @@ function BookDetails() {
 	return (
 		<div className='details-container'>
 			<div className='details-cover'>
-				<img className='book-cover details-cover' src={`http://covers.openlibrary.org/b/isbn/${isbn}.jpg`}></img>
+				<img
+					className='book-cover details-cover'
+					src={`http://covers.openlibrary.org/b/isbn/${isbn}.jpg`} alt='book-cover'></img>
+				<button id='add-book' onClick={() => handleClick(isbn)}>
+					Add
+				</button>
 			</div>
 			<div className='details'>
 				<h2>Rank: {bookDetails['ranks_history'][0].rank}</h2>
@@ -44,11 +55,16 @@ function BookDetails() {
 					</li>
 					<li>Publisher: {bookDetails.publisher}</li>
 					<li>
-						ISBNS:{' '}
-						{bookDetails.isbns.splice(0, 3).map((isbn) => {
+						ISBNS:
+						{bookDetails.isbns.slice(0, 3).map((isbn) => {
 							return <li>{isbn.isbn10}</li>;
 						})}
 					</li>
+					<a
+						target='_blank'
+						href={`https://openlibrary.org/isbn/${bookDetails.isbns[0].isbn10}`}>
+						<button id='get-book-btn'>Get Book at Open Library</button>
+					</a>
 				</ul>
 			</div>
 		</div>
