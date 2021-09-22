@@ -66,7 +66,7 @@ h2 {
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 600;
 	font-size: 3rem;
-	background-color: crimson;
+	background-color: rgb(153, 25, 51);
 	border-radius: 5px;
 	padding: 10px 10px;
 }
@@ -316,6 +316,7 @@ li {
 	border-radius: 10px;
 	padding: 10px 50px;
 	margin: 5% 2%;
+	background-color: rgba(49, 49, 65, 0.5);
 }
 
 .details-cover {
@@ -377,7 +378,7 @@ li {
 
 /* My Reads List */
 .tbr-item {
-	width:70%;
+	width: 70%;
 	height: 100%;
 	margin: 0 auto;
 }
@@ -386,8 +387,13 @@ li {
 	color: white;
 	font-size: 1rem;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 3fr;
 	grid-template-rows: 1fr;
+	text-align: left;
+	height: 60%;
+	width: 100%;
+	margin: 3% 0;
+	/* background-color: rgba(49, 49, 65, 0.5); */
 }
 
 #my-reads-cover {
@@ -403,19 +409,30 @@ li {
 	grid-column: 2 / span 1;
 }
 
+#edit-btn {
+	background-color: transparent;
+	border: 2px solid grey;
+}
+#edit-btn:hover {
+	border: 2px solid rgb(79, 82, 182);
+}
+
 /* review form */
 
 .review-form {
-	color:white;
+	background-color: rgba(49, 49, 65, 0.5);
+	color: white;
 	font-size: 1.5rem;
 	display: flex;
 	flex-wrap: wrap;
-	flex-direction:column;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 90%
+	width: 90%;
+	margin: 20px auto;
+	border-radius: 10px;
+	padding: 2%;
 }
-
 
 #review {
 	height: 200px;
@@ -430,24 +447,91 @@ li {
 
 .review-btn {
 	font-size: 70%;
-	height:max-content;
-	width:max-content;
+	height: max-content;
+	width: max-content;
 	margin: 20px 10px;
 }
 
 .review-details {
-	color:white;
-	height:60%;
-	width:80%;
-	margin:50px auto;
+	color: white;
+	height: 60%;
+	width: 80%;
+	margin: 50px auto;
 }
 
 #review-details-cover {
-	height:30%;
-	width:30%;
+	height: 30%;
+	width: 30%;
 }
 
+/* Search Nav */
+.search-nav {
+	padding: 2%;
+	background-color: rgba(32, 32, 56, 0.5);
+	border-radius: 3px;
+}
 
+.search-form > * {
+	margin: 0 10px;
+	border: none;
+	border-radius: 5px;
+	padding: 7px;
+}
+
+#submit-btn, #add-search-item, #view-search-btn  {
+	border:none;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: rgb(79, 82, 182);
+	color: white;
+	height:max-content;
+	font-size:70%;
+	margin: 0 3px;
+}
+#view-search-btn, #add-search-item:hover {
+	background-color: transparent;
+	border: 1px solid grey;
+
+}
+#submit-btn:hover, #view-search-btn:hover {
+	background-color: transparent;
+	border: 1px solid rgb(79, 82, 182);
+	color:rgb(79, 82, 182)
+}
+
+#get-book-btn {
+	font-size: 90%;
+	margin: 20px 0;
+}
+
+/* Search Results */
+
+.search-result-item {
+	margin: 0 auto;
+}
+
+.search-container {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 1fr;
+	height: 200px;
+	width: 90%;
+	background-color: rgba(53, 53, 65, 0.5);
+	color: white;
+	margin: 20px auto;
+}
+
+#search-image {
+	object-fit: contain;
+	height: 190px;
+	width: 90%;
+	margin: auto;
+}
+
+.search-details {
+	text-align: left;
+
+}
 
 @media (max-width: 800px) {
 	.best-sellers {

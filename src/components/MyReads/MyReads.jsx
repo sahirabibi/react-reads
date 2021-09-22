@@ -5,6 +5,7 @@ import { DataContext } from '../../DataContext';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 
+
 function MyReads(props) {
 	// when add button is clicked, book should be added to a state component that should be updated and sent down and rendered
 	const { myReads } = useContext(DataContext);
@@ -25,18 +26,21 @@ function MyReads(props) {
 							alt='book-cover'
 						/>
 						<div className='reads-container'>
-							<li className='tbr-title'>{read.title}</li>
+							<li className='tbr-title'>
+								<strong>{read.title}</strong>
+							</li>
 							<li>Page Count: {read.num_pages}</li>
 							{read.rating ? (
 								<div>
-									<bold>Rating:</bold> {read.rating}
+									<strong>Rating:</strong> {read.rating}
 								</div>
 							) : (
 								''
 							)}
 							{read.review ? (
 								<div>
-									<bold>Snippet:</bold> {read.review.substring(0, 150)}{' '}
+									<strong>Review Snippet:</strong>{' '}
+									{read.review.substring(0, 150)}{' '}
 								</div>
 							) : (
 								''
@@ -44,7 +48,7 @@ function MyReads(props) {
 							{read.review ? (
 								<div>
 									<Link to={`/my-reads/${read.isbn_10}`}>
-										<button className='review-btn'>Edit</button>
+										<button id='edit-btn' className='review-btn'>Edit</button>
 									</Link>
 									<Link to={`/reviews/details/${read.isbn_10}`}>
 										<button className='review-btn'>See Review</button>

@@ -25,6 +25,7 @@ function App() {
 	const [myReads, setMyReads] = useState(
 		JSON.parse(localStorage.getItem('myReadingData')) || []
 	);
+	const [searchResults, setSearchResults] = useState([]);
 
 	useEffect(() => {
 		localStorage.setItem('myReadingData', JSON.stringify(myReads));
@@ -41,9 +42,7 @@ function App() {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-
-	// const [myReviews, setMyReviews] = useState([]);
-	const [searchResults, setSearchResults] = useState([]);
+	
 
 	// function to update MyReads()
 	function updateMyReads(isbn) {
@@ -68,6 +67,19 @@ function App() {
 			.catch((err) => console.log(err));
 	}
 
+	function updateSearchResults(searchQuery) {
+		console.log('hello from updateSearch!')
+		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
+
+		axios
+			.get(searchURL)
+			.then((res) => {
+				setSearchResults([...res.data.docs.slice(0, 20)]);
+			})
+			.catch((err) => console.log(err));
+
+	}
+
 	return (
 		<div className='App'>
 			{/* Header provides navigation of side*/}
@@ -84,6 +96,7 @@ function App() {
 					updateMyReads,
 					searchResults,
 					setSearchResults,
+					updateSearchResults
 				}}>
 				<Header />
 				<Route exact path='/'>
