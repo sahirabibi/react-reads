@@ -64,16 +64,20 @@ function App() {
 			.catch((err) => console.log(err));
 	}
 
-	function updateSearchResults(searchQuery) {
-		console.log('hello from updateSearch!');
+	async function updateSearchResults(searchQuery) {
 		const searchURL = `http://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
 
-		axios
+		let data;
+
+		await axios
 			.get(searchURL)
 			.then((res) => {
-				setSearchResults([...res.data.docs.slice(0, 20)]);
+				data = res.data.docs.splice(0, 21);
 			})
 			.catch((err) => console.log(err));
+
+		console.log(data);
+		return setSearchResults([...data]);
 	}
 
 	return (
