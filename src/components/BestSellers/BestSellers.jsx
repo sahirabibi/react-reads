@@ -23,7 +23,8 @@ function BestSellers() {
 			.get(bestSellersURL)
 			.then((res) => setBestSellers(res.data.results.books))
 			.catch((err) => console.log(err));
-	});
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
     if (!bestSellers) {
         return <h2>Loading Data...</h2>
