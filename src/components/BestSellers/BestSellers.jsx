@@ -6,16 +6,12 @@ import axios from 'axios';
 import { DataContext } from '../../DataContext';
 import { Link } from 'react-router-dom'
 
-const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
-// const api_key=process.env.REACT_APP_NYT_KEY
+
+
 
 function BestSellers(props) {
 	// run api call based on which genre was clicked using the list_name in the url
-	// set state variable with array of books
-	// get current date using Date() / list_name parameters, setBestSellers
-	// return each book as a card item with rank
-	// map array of bestSellers on BestSellerCard
-	const { date, genres } = useContext(DataContext);
+	const { date, genres, api_key } = useContext(DataContext);
 	const [bestSellers, setBestSellers] = useState();
 	const { name } = useParams();
 	console.log(genres)

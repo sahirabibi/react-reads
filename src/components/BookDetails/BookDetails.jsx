@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
 
-const api_key = 'AGh02pSRily04owAGvUjn2xnYdVPEayX';
+
 
 function BookDetails() {
-	const { updateMyReads } =  useContext(DataContext)
+	const { updateMyReads, api_key } =  useContext(DataContext)
 	const { isbn } = useParams();
 	const [bookDetails, setBookDetails] = useState();
 	const [review, setReview] = useState();
