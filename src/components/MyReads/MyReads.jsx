@@ -1,23 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { DataContext } from '../../DataContext';
-import axios from 'axios';
-import { Route } from 'react-router-dom';
-
 
 function MyReads(props) {
 	// when add button is clicked, book should be added to a state component that should be updated and sent down and rendered
-	const { myReads } = useContext(DataContext);
+	const { myReads, setMyReads } = useContext(DataContext);
+
+	function updateProgress(isbn) {
+		// update reading progress
+		let tempReads = [...myReads];
+		let index = tempReads.findIndex((read) => read.isbn_10 === isbn);
+		tempReads[index].inProgress = !tempReads[index].inProgress;
+		setMyReads([...tempReads]);
+	}
+
+	function deleteRead(index) {
+		let tempReads = [...myReads];
+		tempReads.splice(index, 1)
+		setMyReads([...tempReads])
+	}
 
 	if (myReads.length < 1) {
-		return <h5>Add books to your Reads list to get started!</h5>;
+		return <h2>Add books to your Reads list to get started!</h2>;
 	}
 
 	return (
 		<div className='tbr-item'>
 			<h2>My Reads and Reviews</h2>
-			{myReads.map((read) => {
+			{myReads.map((read, index) => {
 				return (
 					<div className='my-reads-list'>
 						<img
@@ -25,11 +36,24 @@ function MyReads(props) {
 							src={`http://covers.openlibrary.org/b/isbn/${read.isbn_10}.jpg`}
 							alt='book-cover'
 						/>
+						{read.inProgress ? (
+							<button
+								onClick={() => updateProgress(read.isbn_10)}
+								id='inProgress'>
+								In Progress
+							</button>
+						) : (
+							<button
+								onClick={() => updateProgress(read.isbn_10)}
+								id='completed'>
+								Completed
+							</button>
+						)}
 						<div className='reads-container'>
-							<li className='tbr-title'>
+							<p className='tbr-title'>
 								<strong>{read.title}</strong>
-							</li>
-							<li>Page Count: {read.num_pages}</li>
+							</p>
+							<p>Page Count: {read.num_pages}</p>
 							{read.rating ? (
 								<div>
 									<strong>Rating:</strong> {read.rating}
@@ -48,7 +72,9 @@ function MyReads(props) {
 							{read.review ? (
 								<div>
 									<Link to={`/my-reads/${read.isbn_10}`}>
-										<button id='edit-btn' className='review-btn'>Edit</button>
+										<button id='edit-btn' className='review-btn'>
+											Edit
+										</button>
 									</Link>
 									<Link to={`/reviews/details/${read.isbn_10}`}>
 										<button className='review-btn'>See Review</button>
@@ -59,6 +85,7 @@ function MyReads(props) {
 									<button className='review-btn'>Add Review</button>
 								</Link>
 							)}
+							<button id='delete' onClick={() => deleteRead(index)}>Delete</button>
 						</div>
 					</div>
 				);

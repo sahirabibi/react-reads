@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link, Route} from 'react-router-dom'
-import SearchResults from '../Search/SearchResults';
+import { Link } from 'react-router-dom'
+
 import Search from './Search';
 
 function Header(props) {
@@ -26,7 +26,7 @@ function Header(props) {
 						</ul>
 					</nav>
 				</header>
-				<Search/>
+				<Search />
 			</div>
 		);
 }

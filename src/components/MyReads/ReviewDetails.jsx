@@ -13,6 +13,7 @@ function ReviewDetails(props) {
 	useEffect(() => {
 		let targetRead = myReads.filter((read) => read.isbn_10 === isbn);
 		setCurrentRead([...targetRead]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (!currentRead) {

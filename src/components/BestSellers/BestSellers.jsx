@@ -4,20 +4,16 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { DataContext } from '../../DataContext';
-import { Link } from 'react-router-dom'
 
 
 
-
-function BestSellers(props) {
+function BestSellers() {
 	// run api call based on which genre was clicked using the list_name in the url
 	const { date, genres, api_key } = useContext(DataContext);
 	const [bestSellers, setBestSellers] = useState();
 	const { name } = useParams();
 	const currentGenre = genres.filter(genre => genre.list_name_encoded === name);
 	
-
-
 	// api url by genre title and date
 	const bestSellersURL = `https://api.nytimes.com/svc/books/v3/lists/${date}/${name}.json?api-key=${api_key}`;
 
@@ -27,7 +23,7 @@ function BestSellers(props) {
 			.get(bestSellersURL)
 			.then((res) => setBestSellers(res.data.results.books))
 			.catch((err) => console.log(err));
-	}, []);
+	});
 
     if (!bestSellers) {
         return <h2>Loading Data...</h2>

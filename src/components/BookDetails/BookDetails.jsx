@@ -10,7 +10,6 @@ function BookDetails() {
 	const { updateMyReads, api_key } =  useContext(DataContext)
 	const { isbn } = useParams();
 	const [bookDetails, setBookDetails] = useState();
-	const [review, setReview] = useState();
 
 	const bookURL = `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?isbn=${isbn}&api-key=${api_key}`;
 
@@ -21,7 +20,7 @@ function BookDetails() {
 				setBookDetails(res.data.results[0]);
 			})
 			.catch((err) => console.log(err));
-	}, []);
+	});
 
 	function handleClick(isbn) {
 		updateMyReads(isbn);
@@ -36,7 +35,8 @@ function BookDetails() {
 			<div className='details-cover'>
 				<img
 					className='book-cover details-cover'
-					src={`http://covers.openlibrary.org/b/isbn/${isbn}.jpg`} alt='book-cover'></img>
+					src={`http://covers.openlibrary.org/b/isbn/${isbn}.jpg`}
+					alt='book-cover'></img>
 				<button id='add-book' onClick={() => handleClick(isbn)}>
 					Add
 				</button>
@@ -54,14 +54,16 @@ function BookDetails() {
 						Rank Last Week: {bookDetails['ranks_history'][0]['rank_last_week']}
 					</li>
 					<li>Publisher: {bookDetails.publisher}</li>
-					<li>
-						ISBNS:
-						{bookDetails.isbns.slice(0, 3).map((isbn) => {
-							return <li>{isbn.isbn10}</li>;
-						})}
+					<li>ISBNS:
+						<ul>
+							{bookDetails.isbns.slice(0, 3).map((isbn) => {
+								return <li>{isbn.isbn10}</li>;
+							})}
+						</ul>
 					</li>
 					<a
 						target='_blank'
+						rel="noopener noreferrer"
 						href={`https://openlibrary.org/isbn/${bookDetails.isbns[0].isbn10}`}>
 						<button id='get-book-btn'>Get Book at Open Library</button>
 					</a>

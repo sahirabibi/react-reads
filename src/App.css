@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,900;1,200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
 html,
 body {
 	height: 100%;
@@ -12,6 +14,7 @@ body {
 	text-align: center;
 	font-family: 'Nunito Sans', sans-serif;
 	width: 100%;
+	padding-bottom: 50px;
 }
 
 /* Header */
@@ -49,11 +52,14 @@ nav > ul > a {
 	font-size: 100%;
 	color: white;
 	font-size: 1rem;
+	margin: 0 40px;
+	padding: 5px 0;
 }
 
 nav > ul > a:hover {
 	background-color: rgb(71, 72, 75);
 }
+
 
 /* Home */
 .main {
@@ -380,7 +386,7 @@ li {
 .tbr-item {
 	width: 70%;
 	height: 100%;
-	margin: 0 auto;
+	margin: 10px auto;
 }
 
 .my-reads-list {
@@ -388,7 +394,7 @@ li {
 	font-size: 1rem;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
-	grid-template-rows: 1fr;
+	grid-template-rows: 4fr 1fr;
 	text-align: left;
 	height: 60%;
 	width: 100%;
@@ -400,13 +406,15 @@ li {
 	object-fit: contain;
 	width: 70%;
 	height: 70%;
-	grid-row: 1 / span 1;
+	grid-row: 1 / span 2;
 	grid-column: 1 / span 1;
+	margin: auto auto;
 }
 
 .reads-container {
-	grid-row: 1 / span 1;
+	grid-row: 1 / span 2;
 	grid-column: 2 / span 1;
+	margin: auto 0;
 }
 
 #edit-btn {
@@ -415,6 +423,36 @@ li {
 }
 #edit-btn:hover {
 	border: 2px solid rgb(79, 82, 182);
+}
+
+#completed {
+	background-color: seagreen;
+	border: 1px solid seagreen;
+}
+
+#inProgress, #delete {
+	background-color: rgb(134, 49, 68);
+	border: 1px solid rgb(134, 49, 68);
+}
+
+
+
+#completed,
+#inProgress, #delete {
+	height: max-content;
+	width: max-content;
+	font-size: 80%;
+	grid-row: 2 / span 1;
+	grid-column: 1 / span 1;
+	margin: 20px auto 0;
+}
+
+#delete {
+	background-color: transparent;
+	color: rgb(221, 57, 93);
+	border: 1px solid rgb(221, 57, 93);
+	grid-column: 2 / span 3;
+	grid-row: 2 / span 1;
 }
 
 /* review form */
@@ -436,7 +474,7 @@ li {
 
 .review-form > * {
 	border-radius: 5px;
-	border:none;
+	border: none;
 }
 
 #review {
@@ -485,28 +523,35 @@ li {
 }
 
 .search-label {
-	color:white;
+	color: white;
 }
 
-#submit-btn, #add-search-item, #view-search-btn  {
-	border:none;
+.checked {
+	color: orange;
+}
+
+#submit-btn,
+#add-search-item,
+#view-search-btn {
+	border: none;
 	padding: 10px;
 	border-radius: 5px;
 	background-color: rgb(79, 82, 182);
 	color: white;
-	height:max-content;
-	font-size:70%;
+	height: max-content;
+	font-size: 70%;
 	margin: 0 3px;
 }
-#view-search-btn, #add-search-item:hover {
+#view-search-btn,
+#add-search-item:hover {
 	background-color: transparent;
 	border: 1px solid grey;
-
 }
-#submit-btn:hover, #view-search-btn:hover {
+#submit-btn:hover,
+#view-search-btn:hover {
 	background-color: transparent;
 	border: 1px solid rgb(79, 82, 182);
-	color:rgb(79, 82, 182)
+	color: rgb(79, 82, 182);
 }
 
 #get-book-btn {
@@ -540,13 +585,11 @@ li {
 
 .search-details {
 	text-align: left;
-
 }
 
 .subject-list {
 	display: flex;
 	flex-wrap: wrap;
-	
 }
 
 @media (max-width: 800px) {

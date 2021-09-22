@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { DataContext } from '../../DataContext';
-import { Link } from 'react-router-dom';
 
-function SearchResults(props) {
+function SearchResults() {
 	// show search results using an API call on each query and render title, author, isbn and cover image
 	const { searchResults, updateMyReads } = useContext(DataContext);
 

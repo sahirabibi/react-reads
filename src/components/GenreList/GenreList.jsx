@@ -1,20 +1,11 @@
 import React from 'react';
-import BestSellers from '../BestSellers/BestSellers.jsx';
-import BookDetails from '../BookDetails/BookDetails';
-// import { DataContext } from '../DataContext';
-import { Link, Route } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import { Link} from 'react-router-dom';
+import { useContext } from 'react';
 import { DataContext } from '../../DataContext'
 
 function GenreList() {
     // return a list of all genres
-    // map the genres by name and store the topFive in an array (for later use)
-    // set a link to bestSellers on each list item so on click can render BestSellers page
-    // set id on Link using data.results.list_name
-    const { genres, setGenres } = useContext(DataContext)
-    // retrieve top 7 genres to display to users
-    // const [genreSample, setGenreSample] = useState(genres.splice(0, 8))
+    const { genres } = useContext(DataContext)
 
     return (
 			<div className='genres-list'>
@@ -29,7 +20,7 @@ function GenreList() {
 								{genre.books.map((bookCover) => (
 									<img
 										className='book-cover' id='feature-img'
-										src={bookCover['book_image']}></img>
+										src={bookCover['book_image']}alt='book-cover'></img>
 								))}
 							</div>
 						</div>
