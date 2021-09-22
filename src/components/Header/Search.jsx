@@ -1,14 +1,12 @@
 import React from 'react';
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import { useState, useContext } from 'react';
 import { DataContext } from '../../DataContext';
-import { Link, Redirect } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
 
 function Search(props) {
 	// run a call to openLibrary and return book with selected format
 	// search can be with author, subject, title, isbn
-	const { searchResults, updateSearchResults } = useContext(DataContext);
+	const { updateSearchResults } = useContext(DataContext);
 	const history = useHistory()
 
 	const initialState = {
@@ -21,7 +19,7 @@ function Search(props) {
 
 	function handleChange(event) {
 		// update searchQuery with users key-words
-		// split and add + on spaces
+		// split and add + on spaces to format query for API call
 		setSearchQuery({...searchQuery, [event.target.id] : event.target.value})
 		let rawStr = event.target.value;
 		let formattedStr = rawStr.replace(/\s+/g, '+').toLowerCase();
@@ -29,12 +27,11 @@ function Search(props) {
 	}
 
 	function handleSubmit(event) {
-		// submit to searchAPI and retrieve results
+		// send data to func and retrieve results
 		event.preventDefault();
 		updateSearchResults(formattedQuery);
 		history.push('/search/results');
-		setSearchQuery(initialState)
-		
+		setSearchQuery(initialState)	
 	}
 
 	return (
@@ -76,10 +73,3 @@ function Search(props) {
 
 export default Search;
 
-// after retrieving results, set them inside of searchResults var
-// render SearchResults page with search results
-
-// have add button on each search result, onClick=> searchResults.isbn[0] ==> 'isbn'
-// OnClick call setMyReads();
-// when user hits add, call a a function to grab this var and add it to
-//

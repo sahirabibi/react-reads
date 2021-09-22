@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { DataContext } from '../../DataContext';
 
@@ -34,9 +34,6 @@ function MyReviews(props) {
 		setMyReview({ ...myReview, [event.target.id]: event.target.value });
 	}
 
-	function clicked(event) {
-		console.log(event)
-	}
 
 	return (
 		<div className='tbr-item tbr-review'>
@@ -53,10 +50,8 @@ function MyReviews(props) {
 					rows='10'
 					type='text'
 					id='review'
-					// placeholder={currentRead[0].review}
 					onChange={handleChange}></textarea>
 				<label htmlFor='rating'>Rating</label>
-				{/* <input type='text' id='rating' onChange={handleChange} /> */}
 				<select onChange={handleChange} id='rating'>
 					<option id='rating'>⭐️</option>
 					<option id='rating'>⭐️ ⭐️ </option>

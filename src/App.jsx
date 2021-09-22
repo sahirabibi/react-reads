@@ -8,11 +8,10 @@ import GenreList from './components/GenreList/GenreList';
 import MyReads from './components/MyReads/MyReads';
 import ReviewForm from './components/MyReads/ReviewForm';
 import SearchResults from './components/Search/SearchResults';
-import Search from './components/Header/Search';
 import ReviewDetails from './components/MyReads/ReviewDetails';
 import { DataContext } from './DataContext';
-import { Link, Route, Redirect } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import {  Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
@@ -30,6 +29,7 @@ function App() {
 	// API call to get data array for NYT Genres on render
 	const api_key = process.env.REACT_APP_NYT_KEY;
 	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
+	
 	useEffect(() => {
 		axios
 			.get(genre_api)

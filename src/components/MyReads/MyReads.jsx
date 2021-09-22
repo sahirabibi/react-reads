@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { DataContext } from '../../DataContext';
-import axios from 'axios';
-import { Route } from 'react-router-dom';
 
 function MyReads(props) {
 	// when add button is clicked, book should be added to a state component that should be updated and sent down and rendered

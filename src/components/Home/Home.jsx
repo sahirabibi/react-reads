@@ -1,9 +1,5 @@
 import React from 'react';
-import BestSellers from '../BestSellers/BestSellers';
-import BookDetails from '../BookDetails/BookDetails';
-import GenreList from '../GenreList/GenreList';
-// import { DataContext } from 'DataContext';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { DataContext } from '../../DataContext';
 
@@ -36,7 +32,7 @@ function Home(props) {
 
 			<div className='display'>
 				{display.splice(15, 19).map((book, idx) => (
-					<img className='display-book' id={`book-${idx}`} src={book}></img>
+					<img alt='book-covers' className='display-book' id={`book-${idx}`} src={book} key={idx}></img>
 				))}
 			</div>
 		</div>
