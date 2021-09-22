@@ -5,13 +5,21 @@ import { DataContext } from '../../DataContext';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 
-
 function MyReads(props) {
 	// when add button is clicked, book should be added to a state component that should be updated and sent down and rendered
-	const { myReads } = useContext(DataContext);
+	const { myReads, setMyReads } = useContext(DataContext);
+
+	function updateProgress(isbn) {
+		// update reading progress
+		let tempReads = [...myReads];
+		let index = tempReads.findIndex((read) => read.isbn_10 === isbn);
+		console.log(tempReads[index])
+		tempReads[index].inProgress = !tempReads[index].inProgress;
+		setMyReads([...tempReads]);
+	}
 
 	if (myReads.length < 1) {
-		return <h5>Add books to your Reads list to get started!</h5>;
+		return <h2>Add books to your Reads list to get started!</h2>;
 	}
 
 	return (
@@ -25,6 +33,15 @@ function MyReads(props) {
 							src={`http://covers.openlibrary.org/b/isbn/${read.isbn_10}.jpg`}
 							alt='book-cover'
 						/>
+						{read.inProgress ? (
+							<button onClick={() => updateProgress(read.isbn_10)} id='inProgress'>
+								In Progress
+							</button>
+						) : (
+							<button onClick={() => updateProgress()} id='completed'>
+								Completed
+							</button>
+						)}
 						<div className='reads-container'>
 							<li className='tbr-title'>
 								<strong>{read.title}</strong>
@@ -48,7 +65,9 @@ function MyReads(props) {
 							{read.review ? (
 								<div>
 									<Link to={`/my-reads/${read.isbn_10}`}>
-										<button id='edit-btn' className='review-btn'>Edit</button>
+										<button id='edit-btn' className='review-btn'>
+											Edit
+										</button>
 									</Link>
 									<Link to={`/reviews/details/${read.isbn_10}`}>
 										<button className='review-btn'>See Review</button>

@@ -34,6 +34,10 @@ function MyReviews(props) {
 		setMyReview({ ...myReview, [event.target.id]: event.target.value });
 	}
 
+	function clicked(event) {
+		console.log(event)
+	}
+
 	return (
 		<div className='tbr-item tbr-review'>
 			{currentRead.map((item) => (

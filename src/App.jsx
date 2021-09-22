@@ -53,6 +53,7 @@ function App() {
 					author: res.data.authors,
 					publishers: res.data.publishers,
 					num_pages: res.data.number_of_pages,
+					inProgress: true,
 					reviewTitle: '',
 					review: '',
 					rating: '',
