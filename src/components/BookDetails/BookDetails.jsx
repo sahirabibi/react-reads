@@ -21,7 +21,7 @@ function BookDetails() {
 				setBookDetails(res.data.results[0]);
 			})
 			.catch((err) => setError([...error, err]));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ function BookDetails() {
 				setKey(res.data.works[0].key);
 			})
 			.catch((err) => setError([...error, err]));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -43,8 +43,8 @@ function BookDetails() {
 				setBookDescription([res.data.description.value]);
 			})
 			.catch((err) => setError([...error, err]));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [bookKey])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [bookKey]);
 
 	function handleClick(isbn) {
 		updateMyReads(isbn);
@@ -59,7 +59,7 @@ function BookDetails() {
 			<div className='details-cover'>
 				<img
 					className='book-cover details-cover'
-					src={`http://covers.openlibrary.org/b/isbn/${isbn}.jpg`}
+					src={`https://covers.openlibrary.org/b/isbn/${isbn}.jpg`}
 					alt='book-cover'></img>
 				<button id='add-book' onClick={() => handleClick(isbn)}>
 					Add
@@ -69,7 +69,13 @@ function BookDetails() {
 				<h2>Rank: {bookDetails['ranks_history'][0].rank}</h2>
 				<h3>{bookDetails['title']}</h3>
 				<h4>{bookDetails.author}</h4>
-				<p>{bookDescription ? <p>{bookDescription}</p> : bookDetails['description']}</p>
+				<p>
+					{bookDescription ? (
+						<p>{bookDescription}</p>
+					) : (
+						bookDetails['description']
+					)}
+				</p>
 				<ul>
 					<li>
 						Weeks On List: {bookDetails['ranks_history'][0]['weeks_on_list']}
