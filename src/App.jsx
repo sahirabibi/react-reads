@@ -77,11 +77,17 @@ function App() {
 		await axios
 			.get(searchURL)
 			.then((res) => {
-				data = res.data.docs.splice(0, 21);
+				if (res) {
+					data = res
+				}	
 			})
 			.catch((err) => setError([...error, err]));
+		
+		if (data.length > 1) {
+			data.data.docs.splice(0, 21);
+			return setSearchResults([...data]);
 
-		return setSearchResults([...data]);
+		}	
 	}
 
 	return (
