@@ -18,6 +18,7 @@ https://bibireads.netlify.app
 - Gain additional details of each book on select.
 - Browse millions of records stored with Open Library.
 - Add books to MyReads and update progress, add reviews, and ratings as you finish them!
+- Bookmarks allow users to track their progress through their books by submitting their current thoughts and pages read.
 
 ## Installation Instructions
 Note: This app was created using Visual Studio Code Version 1.60.1. 
@@ -163,3 +164,23 @@ https://openlibrary.org/isbn/9780140328721.json
 <img width="1360" alt="Screen Shot 2021-09-22 at 10 18 43 PM" src="https://media.git.generalassemb.ly/user/38087/files/c81d2980-1bf3-11ec-8be8-82a9fd18b908">
 <img width="1391" alt="Screen Shot 2021-09-22 at 10 19 02 PM" src="https://media.git.generalassemb.ly/user/38087/files/c9e6ed00-1bf3-11ec-85de-5c2295ce0a2b">
 <img width="1391" alt="Screen Shot 2021-09-22 at 10 22 24 PM" src="https://media.git.generalassemb.ly/user/38087/files/cf443780-1bf3-11ec-9f72-21d82f565266">
+
+
+## Contribution Guidelines
+Please provide feedback as I'd love to improve!
+- Report a bug
+- Submit a fix
+- Propose new features
+
+### All Change Happens with Github Pull Requests
+1. Fork the repo and create a new branch.
+2. Any additional API's should be added to the documentation.
+3. Make sure your code is tested.
+5. Run num run lint for style unification!
+4. Issue the pull request.
+
+### Report bugs via Issue
+1. Provide a description of the bug.
+2. How it was produced and steps to reproduce. (Be thorough!)
+3. Expected behavior and what actually happened.
+4. Notes: Any errors you received that you think may be useful.
