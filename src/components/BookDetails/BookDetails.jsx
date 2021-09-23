@@ -21,6 +21,7 @@ function BookDetails() {
 				setBookDetails(res.data.results[0]);
 			})
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -31,6 +32,7 @@ function BookDetails() {
 				setKey(res.data.works[0].key)
 			})
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {

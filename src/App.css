@@ -60,7 +60,6 @@ nav > ul > a:hover {
 	background-color: rgb(71, 72, 75);
 }
 
-
 /* Home */
 .main {
 	margin: 1% 5%;
@@ -430,15 +429,15 @@ li {
 	border: 1px solid seagreen;
 }
 
-#inProgress, #delete {
+#inProgress,
+#delete {
 	background-color: rgb(134, 49, 68);
 	border: 1px solid rgb(134, 49, 68);
 }
 
-
-
 #completed,
-#inProgress, #delete {
+#inProgress,
+#delete {
 	height: max-content;
 	width: max-content;
 	font-size: 80%;
@@ -591,6 +590,38 @@ li {
 	display: flex;
 	flex-wrap: wrap;
 }
+
+/* BookMarks */
+.all-bookmarks {
+	margin: 0 auto;
+}
+
+.bookmark-details {
+	margin: 20px;
+	background-color: rgb(99, 35, 47);
+	color: white;
+	text-align: left;
+	padding: 20px;
+	border-radius: 30px;
+}
+
+.progress > * {
+	margin: 20px;
+}
+
+#currentProgress {
+	width: 10%;
+	padding: 5px;
+	margin: 0 10px 10px;
+	border-radius: 5px;
+	border: none;
+}
+
+#currentThoughts {
+	width: 90%;
+}
+
+
 
 @media (max-width: 800px) {
 	.best-sellers {

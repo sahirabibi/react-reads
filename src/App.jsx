@@ -9,6 +9,7 @@ import MyReads from './components/MyReads/MyReads';
 import ReviewForm from './components/MyReads/ReviewForm';
 import SearchResults from './components/Search/SearchResults';
 import ReviewDetails from './components/MyReads/ReviewDetails';
+import Bookmarks from './components/MyReads/Bookmarks';
 import { DataContext } from './DataContext';
 import {  Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -25,6 +26,7 @@ function App() {
 	useEffect(() => {
 		localStorage.setItem('myReadingData', JSON.stringify(myReads));
 	}, [myReads]);
+
 
 	// API call to get data array for NYT Genres on render
 	const api_key = process.env.REACT_APP_NYT_KEY;
@@ -58,6 +60,7 @@ function App() {
 					reviewTitle: '',
 					review: '',
 					rating: '',
+					bookmarks: []
 				};
 				setMyReads([...myReads, newRead]);
 			})
@@ -119,6 +122,9 @@ function App() {
 				</Route>
 				<Route exact path='/search/results'>
 					<SearchResults />
+				</Route>
+				<Route exact path='/my-reads/bookmarks/:isbn'>
+					<Bookmarks />
 				</Route>
 			</DataContext.Provider>
 			<Route exact path='/about'>
