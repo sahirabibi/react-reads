@@ -85,7 +85,14 @@ function MyReads(props) {
 									<button className='review-btn'>Add Review</button>
 								</Link>
 							)}
-							<button id='delete' onClick={() => deleteRead(index)}>Delete</button>
+							<Link to={`/my-reads/bookmarks/${read.isbn_10}`}>
+								<button className='review-btn' id='bookmarks'>
+									Bookmarks
+								</button>
+							</Link>
+							<button id='delete' onClick={() => deleteRead(index)}>
+								Delete
+							</button>
 						</div>
 					</div>
 				);

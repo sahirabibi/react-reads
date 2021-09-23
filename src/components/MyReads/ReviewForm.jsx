@@ -50,7 +50,7 @@ function MyReviews(props) {
 					rows='10'
 					type='text'
 					id='review'
-					onChange={handleChange}></textarea>
+					onChange={handleChange}></textarea> 
 				<label htmlFor='rating'>Rating</label>
 				<select onChange={handleChange} id='rating'>
 					<option id='rating'>⭐️</option>
