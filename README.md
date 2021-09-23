@@ -13,6 +13,9 @@ https://bibireads.netlify.app
 ## Tech Frame Used
 - Built with React v17.0
 
+## Technologies
+- Visual Studio Code Version 1.60.1
+
 ## Features
 - Browse the NYT Best Sellers Section.
 - Gain additional details of each book on select.
@@ -25,6 +28,7 @@ Note: This app was created using Visual Studio Code Version 1.60.1.
 Fork and clone the repo using either SSH or HTTPS in a directory of your choice.
 
 In terminal:
+
 ```
 $ git clone [SSH/HTTPS KEY]
 ```
@@ -35,7 +39,7 @@ $ cd ./react-reads
 ````
 and run npm install to download relevant dependencies:
 
-````
+```
 $ npm install
 ```
 Once dependencies are installed, open the app in your IDE of choice (this example uses Visual Studio Code terminal command). Then start the app with 'npm start': 
@@ -155,8 +159,6 @@ https://openlibrary.org/isbn/9780140328721.json
    ],
 
 ```
-
-
 
 ## Working Site Images
 
