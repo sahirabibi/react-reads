@@ -11,7 +11,7 @@ import SearchResults from './components/Search/SearchResults';
 import ReviewDetails from './components/MyReads/ReviewDetails';
 import Bookmarks from './components/MyReads/Bookmarks';
 import { DataContext } from './DataContext';
-import {  Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -27,7 +27,6 @@ function App() {
 		localStorage.setItem('myReadingData', JSON.stringify(myReads));
 	}, [myReads]);
 
-
 	// API call to get data array for NYT Genres on render
 	const api_key = process.env.REACT_APP_NYT_KEY;
 	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
@@ -40,7 +39,7 @@ function App() {
 				setGenres(res.data.results.lists.splice(0, 7));
 			})
 			.catch((err) => console.log(err));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	// function to update MyReads()
@@ -60,7 +59,7 @@ function App() {
 					reviewTitle: '',
 					review: '',
 					rating: '',
-					bookmarks: []
+					bookmarks: [],
 				};
 				setMyReads([...myReads, newRead]);
 			})
@@ -68,7 +67,7 @@ function App() {
 	}
 
 	async function updateSearchResults(searchQuery) {
-		const searchURL = `https://openlibrary.org/search.json?q=${searchQuery.title}&author=${searchQuery.author}&subject=${searchQuery.subject}&isbn=${searchQuery.isbn}`;
+		const searchURL = `https://openlibrary.org/search.json?q=${searchQuery.title}`;
 
 		let data;
 

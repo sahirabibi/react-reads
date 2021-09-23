@@ -1,26 +1,24 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 import { DataContext } from '../../DataContext';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 function Search(props) {
 	// run a call to openLibrary and return book with selected format
 	// search can be with author, subject, title, isbn
 	const { updateSearchResults } = useContext(DataContext);
-	const history = useHistory()
+	const history = useHistory();
 
 	const initialState = {
 		title: '',
-		author: '',
-		isbn: '',
 	};
 	const [searchQuery, setSearchQuery] = useState(initialState);
-	const [formattedQuery, setFormattedQuery] = useState(initialState)
+	const [formattedQuery, setFormattedQuery] = useState(initialState);
 
 	function handleChange(event) {
 		// update searchQuery with users key-words
 		// split and add + on spaces to format query for API call
-		setSearchQuery({...searchQuery, [event.target.id] : event.target.value})
+		setSearchQuery({ ...searchQuery, [event.target.id]: event.target.value });
 		let rawStr = event.target.value;
 		let formattedStr = rawStr.replace(/\s+/g, '+').toLowerCase();
 		setFormattedQuery({ ...formattedQuery, [event.target.id]: formattedStr });
@@ -31,7 +29,7 @@ function Search(props) {
 		event.preventDefault();
 		updateSearchResults(formattedQuery);
 		history.push('/search/results');
-		setSearchQuery(initialState)	
+		setSearchQuery(initialState);
 	}
 
 	return (
@@ -47,20 +45,6 @@ function Search(props) {
 						id='title'
 						placeholder='title'
 						value={searchQuery.title}
-					/>
-					<input
-						onChange={handleChange}
-						type='text'
-						id='author'
-						placeholder='author'
-						value={searchQuery.author}
-					/>
-					<input
-						onChange={handleChange}
-						type='text'
-						id='isbn'
-						placeholder='isbn'
-						value={searchQuery.isbn}
 					/>
 					<button id='submit-btn' type='submit' onClick={handleSubmit}>
 						Submit
