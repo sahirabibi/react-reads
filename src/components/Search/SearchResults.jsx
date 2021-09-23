@@ -6,8 +6,10 @@ function SearchResults() {
 	// show search results using an API call on each query and render title, author, isbn and cover image
 	const { searchResults, updateMyReads } = useContext(DataContext);
 
-	if (searchResults.length < 1) {
-		return <h2>Loading Search...</h2>;
+	if (searchResults === null) {
+		return <h2>Loading!</h2>;
+	} else if (searchResults.length < 1) {
+		return <h2>Nothing Found! Try a different search!</h2>;
 	}
 
 	return (
@@ -17,13 +19,16 @@ function SearchResults() {
 				return (
 					<div className='search-container'>
 						<img
-							src={`http://covers.openlibrary.org/b/isbn/${result.isbn[0]}.jpg`}
+							src={result.isbn ? `https://covers.openlibrary.org/b/isbn/${result.isbn[0]}.jpg` : ''}
 							alt='book-cover'
 							id='search-image'
 						/>
 						<div className='search-details'>
-							<p>Title: {result.title}</p>
-							<p>Author: {result.author_name ? result.author_name[0] : 'no author'}</p>
+							<p>Title: {result.title ? result.title : 'no title'}</p>
+							<p>
+								Author:{' '}
+								{result.author_name ? result.author_name[0] : 'no author'}
+							</p>
 							<ul id='subject-list'>
 								{result.subject
 									? result.subject
@@ -39,7 +44,7 @@ function SearchResults() {
 							</button>
 							<a
 								target='_blank'
-								href={`https://openlibrary.org/isbn/${result.isbn[0]}`}
+								href={result.isbn ? `https://openlibrary.org/isbn/${result.isbn[0]}` : ''}
 								rel='noreferrer'>
 								<button id='view-search-btn'>View Book at Open Library</button>
 							</a>

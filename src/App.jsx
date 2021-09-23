@@ -77,11 +77,19 @@ function App() {
 		await axios
 			.get(searchURL)
 			.then((res) => {
-				data = res.data.docs.splice(0, 21);
+				data = res.data
 			})
 			.catch((err) => setError([...error, err]));
-
-		return setSearchResults([...data]);
+		
+		console.log(data)
+		if (data.docs.length > 0) {
+			console.log('hello')
+			let snipData = data.docs.splice(0, 21);
+			return setSearchResults([...snipData]);
+		}
+		else {
+			return setSearchResults(null)
+		}	
 	}
 
 	return (
