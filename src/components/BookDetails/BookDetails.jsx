@@ -5,7 +5,7 @@ import axios from 'axios';
 import { DataContext } from '../../DataContext';
 
 function BookDetails() {
-	const { updateMyReads, api_key } = useContext(DataContext);
+	const { updateMyReads, api_key, error, setError } = useContext(DataContext);
 	const { isbn } = useParams();
 	const [bookDetails, setBookDetails] = useState();
 	const [bookKey, setKey] = useState();
@@ -20,7 +20,7 @@ function BookDetails() {
 			.then((res) => {
 				setBookDetails(res.data.results[0]);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setError([...error, err]));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -29,9 +29,9 @@ function BookDetails() {
 		axios
 			.get(`https://openlibrary.org/isbn/${isbn}.json`)
 			.then((res) => {
-				setKey(res.data.works[0].key)
+				setKey(res.data.works[0].key);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setError([...error, err]));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -42,9 +42,8 @@ function BookDetails() {
 			.then((res) => {
 				setBookDescription([res.data.description.value]);
 			})
-			.catch((err) => console.log(err));
-
-
+			.catch((err) => setError([...error, err]));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [bookKey])
 
 	function handleClick(isbn) {

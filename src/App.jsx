@@ -10,6 +10,7 @@ import ReviewForm from './components/MyReads/ReviewForm';
 import SearchResults from './components/Search/SearchResults';
 import ReviewDetails from './components/MyReads/ReviewDetails';
 import Bookmarks from './components/MyReads/Bookmarks';
+import Error from './components/Error/Error';
 import { DataContext } from './DataContext';
 import { Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -22,6 +23,8 @@ function App() {
 		JSON.parse(localStorage.getItem('myReadingData')) || []
 	);
 	const [searchResults, setSearchResults] = useState([]);
+
+	const [error, setError] = useState([])
 
 	useEffect(() => {
 		localStorage.setItem('myReadingData', JSON.stringify(myReads));
@@ -38,7 +41,7 @@ function App() {
 				setDate(res.data.results['bestsellers_date']);
 				setGenres(res.data.results.lists.splice(0, 7));
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setError([...error, err]));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -63,7 +66,7 @@ function App() {
 				};
 				setMyReads([...myReads, newRead]);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setError([...error, err]));
 	}
 
 	async function updateSearchResults(searchQuery) {
@@ -76,7 +79,7 @@ function App() {
 			.then((res) => {
 				data = res.data.docs.splice(0, 21);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setError([...error, err]));
 
 		return setSearchResults([...data]);
 	}
@@ -96,8 +99,11 @@ function App() {
 					setSearchResults,
 					updateSearchResults,
 					api_key,
+					error,
+					setError,
 				}}>
 				<Header />
+				{error.length > 1 ? <Error /> : null}
 				<Route exact path='/'>
 					<Home />
 				</Route>

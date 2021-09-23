@@ -24,8 +24,13 @@ function Bookmarks(props) {
 		event.preventDefault();
 		let tempReads = [...myReads];
 		let index = tempReads.findIndex((read) => read.isbn_10 === isbn);
-		tempReads[index].bookmarks.unshift(bookmark)
+		tempReads[index].bookmarks.unshift(bookmark);
 		setMyReads([...tempReads]);
+		setBookmark({
+			isbn: isbn,
+			currentProgress: '',
+			currentThoughts: '',
+		});
 	}
 
 	function handleChange(event) {
@@ -40,23 +45,24 @@ function Bookmarks(props) {
 		<div>
 			<h2>{currentBook[0].title}</h2>
 			<form className='review-form bookmark-form' onSubmit={handleSubmit}>
-				<div classname='progress'>
+				<div className='progress'>
 					<label htmlFor='current-progress'>Pages Read:</label>
 					<input
 						type='number'
 						id='currentProgress'
 						onChange={handleChange}
 						step='1'
+						value={bookmark.currentProgress}
 					/>{' '}
 					/ {currentBook[0].num_pages} pages
 				</div>
 				<label htmlFor='review'>Current Thoughts</label>
 				<textarea
-					class='longInput'
 					cols='30'
 					rows='10'
 					type='text'
 					id='currentThoughts'
+					value={bookmark.currentThoughts}
 					onChange={handleChange}></textarea>
 				<button className='review-btn'>Submit</button>
 			</form>
