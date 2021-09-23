@@ -1,70 +1,165 @@
-# Getting Started with Create React App
+# Reads
+## Project Description 
+Reads is a front-end site that allows users to browse NYT Best Sellers and add them to their own Reading list. Users can track their progress through the book and add reviews and ratings. Users can also search the Open Library Database for additional titles to add to their list. The app uses the New York Times API to list the best-sellers in each of the seven NYT book-type featured lists. Selecting a book on the list takes the user to a more detailed page view that gives the user a short summary of the book and book details, such as author, cover, and isbns. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Featured Lists are as follows : (Hardcover-Fiction, Hardcover-Non-fiction. Paperback Trade Fiction, Paperback Non-Fiction, Combined E-Book & Print Fiction, Combined E-Book & Print Non-fiction, Advice, How-To, Misc)
 
-## Available Scripts
+## Motivation 
+I am an avid reader and love using my local library to support their mission as well as their authors. This site not only allows users to be exposed to trending titles, but also allows them to find books that they can then go and checkout at the OpenLibrary page, hence, supporting the hard work OpenLibrary does for the literary community!
 
-In the project directory, you can run:
+## Link To Deployed App: 
+https://bibireads.netlify.app
 
-### `npm start`
+## Tech Frame Used
+- Built with React v17.0
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+- Browse the NYT Best Sellers Section.
+- Gain additional details of each book on select.
+- Browse millions of records stored with Open Library.
+- Add books to MyReads and update progress, add reviews, and ratings as you finish them!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation Instructions
+Note: This app was created using Visual Studio Code Version 1.60.1. 
+Fork and clone the repo using either SSH or HTTPS in a directory of your choice.
 
-### `npm test`
+In terminal:
+```
+$ git clone [SSH/HTTPS KEY]
+```
+This is a react app and will require that relevant dependencies are downloaded. Move into the repo directory (named react-reads)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ cd ./react-reads
+````
+and run npm install to download relevant dependencies:
 
-### `npm run build`
+````
+$ npm install
+```
+Once dependencies are installed, open the app in your IDE of choice (this example uses Visual Studio Code terminal command). Then start the app with 'npm start': 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ code . 
+$ npm start
+```
+To view main files, open the src directory. App.js contains the main code for the app and relevant components can be found in the components folder. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Usage Example 
+> NYT API link
+https://developer.nytimes.com/docs/books-product/1/overview
 
-### `npm run eject`
+- Note: API Key is required for usage and user must AUTHORIZE target API (in this case it was the NYT Books API). Go to the link provided above and create an account with the NYT API to gain access to your unique API key. Make sure to authorize your local app in order to gain functionality.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+EXAMPLE: 
+Example Call for best-selling hard-cover fiction books for the week of 09/01/2021.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+"https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&bestsellers-date=2021-09-01&api-key=[MY_API_KEY]"
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> Open Library API Link 
+https://openlibrary.org/developers
+- Note: No API key required. Calls are done with formatted https urls that include '.json' and the required parameters.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+EXAMPLE: 
+Example call for a specific book using the isbn: 
 
-## Learn More
+https://openlibrary.org/isbn/9780140328721.json
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Example Data Response: NYT
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### API Res For Book Details: (Billy Summers by Stephen King) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```json
+{
+  "status": "OK",
+  "copyright": "Copyright (c) 2021 The New York Times Company.  All Rights Reserved.",
+  "num_results": 15,
+  "last_modified": "2021-08-25T22:07:44-04:00",
+  "results": [
+    {
+      "list_name": "Hardcover Fiction",
+      "display_name": "Hardcover Fiction",
+      "bestsellers_date": "2021-08-21",
+      "published_date": "2021-09-05",
+      "rank": 1,
+      "rank_last_week": 1,
+      "weeks_on_list": 3,
+      "asterisk": 0,
+      "dagger": 0,
+      "amazon_product_url": "https://www.amazon.com/dp/1982173610?tag=NYTBSREV-20",
+      "book_details": [
+        {
+          "title": "BILLY SUMMERS",
+          "description": "A killer for hire who only takes out bad guys seeks redemption as he does one final job.",
+          "contributor": "by Stephen King",
+          "author": "Stephen King",
+          "contributor_note": "",
+          "price": "0.00",
+          "age_group": "",
+          "publisher": "Scribner",
+          "primary_isbn13": "9781982173616",
+          "primary_isbn10": "1982173610"
+        }
+      ],
+```
+### API Snippet Result for Open Library Search Results via ISBN 
 
-### Analyzing the Bundle Size
+```
+{
+   "publishers":[
+      "Puffin"
+   ],
+   "number_of_pages":96,
+   "isbn_10":[
+      "0140328726"
+   ],
+   "covers":[
+      8739161
+   ],
+   "key":"/books/OL7353617M",
+   "authors":[
+      {
+         "key":"/authors/OL34184A"
+      }
+   ],
+   "ocaid":"fantasticmrfoxpu00roal",
+   "contributions":[
+      "Tony Ross (Illustrator)"
+   ],
+   "languages":[
+      {
+         "key":"/languages/eng"
+      }
+   ],
+   "classifications":{
+      
+   },
+   "source_records":[
+      "ia:fantasticmrfox00dahl_834",
+      "marc:marc_openlibraries_sanfranciscopubliclibrary/sfpl_chq_2018_12_24_run02.mrc:85081404:4525"
+   ],
+   "title":"Fantastic Mr. Fox",
+   "identifiers":{
+      "goodreads":[
+         "1507552"
+      ],
+      "librarything":[
+         "6446"
+      ]
+   },
+   "isbn_13":[
+      "9780140328721"
+   ],
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Working Site Images
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img width="1426" alt="Screen Shot 2021-09-22 at 10 18 26 PM" src="https://media.git.generalassemb.ly/user/38087/files/c2274880-1bf3-11ec-88c5-005756ce125c">
+<img width="1360" alt="Screen Shot 2021-09-22 at 10 18 43 PM" src="https://media.git.generalassemb.ly/user/38087/files/c81d2980-1bf3-11ec-8be8-82a9fd18b908">
+<img width="1391" alt="Screen Shot 2021-09-22 at 10 19 02 PM" src="https://media.git.generalassemb.ly/user/38087/files/c9e6ed00-1bf3-11ec-85de-5c2295ce0a2b">
+<img width="1391" alt="Screen Shot 2021-09-22 at 10 22 24 PM" src="https://media.git.generalassemb.ly/user/38087/files/cf443780-1bf3-11ec-9f72-21d82f565266">
