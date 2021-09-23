@@ -506,7 +506,13 @@ li {
 
 #review-details-cover {
 	height: 30%;
-	width: 30%;
+	width: 20%;
+}
+
+.review-card {
+	height: 50%;
+	width: 80%;
+	margin: 0 auto;
 }
 
 /* Search Nav */
@@ -622,6 +628,10 @@ li {
 
 #currentThoughts {
 	width: 90%;
+}
+
+.bookmarks-display {
+	color:white;
 }
 
 

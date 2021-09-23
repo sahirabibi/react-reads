@@ -67,6 +67,7 @@ function Bookmarks(props) {
 				<button className='review-btn'>Submit</button>
 			</form>
 			<div className='all-bookmarks'>
+				<h4 className='bookmarks-display'>Your Bookmarks:</h4>
 				{currentBook[0].bookmarks ? (
 					currentBook[0].bookmarks.map((bookmark, id) => {
 						return (
@@ -82,7 +83,9 @@ function Bookmarks(props) {
 						);
 					})
 				) : (
-					<h3>Add Bookmarks to view them here...</h3>
+					<h3 className='bookmarks-display'>
+						Add Bookmarks to view them here...
+					</h3>
 				)}
 			</div>
 		</div>
