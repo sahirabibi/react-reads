@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
+
 function BestSellerCard({book}) {
     // return a styled card using in the props obj 
+	
    
     return (
 			<Link to={`/best-sellers/genre/${book.isbns[0].isbn10}`}>

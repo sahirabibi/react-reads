@@ -10,17 +10,19 @@ function GenreList() {
     return (
 			<div className='genres-list'>
 				<h2 className='featured-list'>Featured Lists</h2>
-				{genres.map((genre) => (
+				{genres.map((genre, index) => (
 					<Link
 						to={`/best-sellers/${genre.list_name_encoded}`}
 						key={genre['display_name']}>
-						<div className='genre'>
+						<div className='genre' key={index}>
 							<li className='genre-name'>{genre['display_name']}</li>
 							<div className='featured-covers'>
 								{genre.books.map((bookCover) => (
 									<img
-										className='book-cover' id='feature-img'
-										src={bookCover['book_image']}alt='book-cover'></img>
+										className='book-cover'
+										id='feature-img'
+										src={bookCover['book_image']}
+										alt='book-cover'></img>
 								))}
 							</div>
 						</div>

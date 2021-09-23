@@ -30,7 +30,7 @@ function MyReads(props) {
 			<h2>My Reads and Reviews</h2>
 			{myReads.map((read, index) => {
 				return (
-					<div className='my-reads-list'>
+					<div className='my-reads-list' key={index}>
 						<img
 							id='my-reads-cover'
 							src={`http://covers.openlibrary.org/b/isbn/${read.isbn_10}.jpg`}

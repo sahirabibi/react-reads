@@ -81,9 +81,6 @@ function App() {
 
 	return (
 		<div className='App'>
-			{/* Header provides navigation of side*/}
-
-			{/* Pass BestSeller and Genre List Data to relevant components */}
 			<DataContext.Provider
 				value={{
 					genres,
@@ -120,7 +117,6 @@ function App() {
 				<Route exact path='/reviews/details/:isbn'>
 					<ReviewDetails />
 				</Route>
-
 				<Route exact path='/search/results'>
 					<SearchResults />
 				</Route>
