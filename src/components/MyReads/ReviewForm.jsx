@@ -53,11 +53,11 @@ function MyReviews(props) {
 					onChange={handleChange}></textarea> 
 				<label htmlFor='rating'>Rating</label>
 				<select onChange={handleChange} id='rating'>
-					<option id='rating'>⭐️</option>
-					<option id='rating'>⭐️ ⭐️ </option>
-					<option id='rating'>⭐️ ⭐️ ⭐️</option>
-					<option id='rating'>⭐️ ⭐️ ⭐️ ⭐️</option>
-					<option id='rating'>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</option>
+					<option className='rating'>⭐️</option>
+					<option className='rating'>⭐️ ⭐️ </option>
+					<option className='rating'>⭐️ ⭐️ ⭐️</option>
+					<option className='rating'>⭐️ ⭐️ ⭐️ ⭐️</option>
+					<option className='rating'>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</option>
 				</select>
 				<button id='review-submit'>Submit</button>
 			</form>

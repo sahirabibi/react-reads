@@ -50,7 +50,6 @@ $ npm start
 ```
 To view main files, open the src directory. App.js contains the main code for the app and relevant components can be found in the components folder. 
 
-
 ## API Usage Example 
 > NYT API link
 https://developer.nytimes.com/docs/books-product/1/overview
@@ -166,6 +165,7 @@ https://openlibrary.org/isbn/9780140328721.json
 <img width="1360" alt="Screen Shot 2021-09-22 at 10 18 43 PM" src="https://media.git.generalassemb.ly/user/38087/files/c81d2980-1bf3-11ec-8be8-82a9fd18b908">
 <img width="1391" alt="Screen Shot 2021-09-22 at 10 19 02 PM" src="https://media.git.generalassemb.ly/user/38087/files/c9e6ed00-1bf3-11ec-85de-5c2295ce0a2b">
 <img width="1391" alt="Screen Shot 2021-09-22 at 10 22 24 PM" src="https://media.git.generalassemb.ly/user/38087/files/cf443780-1bf3-11ec-9f72-21d82f565266">
+
 
 
 ## Contribution Guidelines
