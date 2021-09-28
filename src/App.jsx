@@ -69,10 +69,9 @@ function App() {
 	}
 
 	async function updateSearchResults(searchQuery) {
+		setSearchResults([]);
 		const searchURL = `https://openlibrary.org/search.json?q=${searchQuery.title}`;
-
 		let data;
-
 		await axios
 			.get(searchURL)
 			.then((res) => {
@@ -82,7 +81,6 @@ function App() {
 
 		console.log(data);
 		if (data.docs.length > 0) {
-			console.log('hello');
 			let snipData = data.docs.splice(0, 21);
 			return setSearchResults([...snipData]);
 		} else {
