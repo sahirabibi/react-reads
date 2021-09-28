@@ -10,7 +10,7 @@ import { DataContext } from '../../DataContext';
 function BestSellers() {
 	// run api call based on which genre was clicked using the list_name in the url
 	const { date, genres, api_key, error, setError } = useContext(DataContext);
-	const [bestSellers, setBestSellers] = useState();
+	const [bestSellers, setBestSellers] = useState([]);
 	const { name } = useParams();
 	const currentGenre = genres.filter(genre => genre.list_name_encoded === name);
 	
@@ -26,7 +26,7 @@ function BestSellers() {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-    if (!bestSellers) {
+    if (!bestSellers.length) {
         return <h2>Loading Data...</h2>
     }
 
@@ -34,8 +34,8 @@ function BestSellers() {
 		<div>
 			<h2>Best Sellers in {currentGenre[0].list_name} </h2>
 			<div className='best-sellers'>
-				{bestSellers.map((book) => (
-					<li>
+				{bestSellers.map((book, idx) => (
+					<li key={idx}>
 						<BestSellerCard book={book}></BestSellerCard>
 					</li>
 				))}

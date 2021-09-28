@@ -50,7 +50,6 @@ $ npm start
 ```
 To view main files, open the src directory. App.js contains the main code for the app and relevant components can be found in the components folder. 
 
-
 ## API Usage Example 
 > NYT API link
 https://developer.nytimes.com/docs/books-product/1/overview

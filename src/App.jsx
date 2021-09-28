@@ -17,6 +17,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
+	// API call to get data array for NYT Genres on render
+	const api_key = process.env.REACT_APP_NYT_KEY;
+	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
 	const [genres, setGenres] = useState([]);
 	const [date, setDate] = useState();
 	const [myReads, setMyReads] = useState(
@@ -24,15 +27,11 @@ function App() {
 	);
 	const [searchResults, setSearchResults] = useState([]);
 
-	const [error, setError] = useState([])
+	const [error, setError] = useState([]);
 
 	useEffect(() => {
 		localStorage.setItem('myReadingData', JSON.stringify(myReads));
 	}, [myReads]);
-
-	// API call to get data array for NYT Genres on render
-	const api_key = process.env.REACT_APP_NYT_KEY;
-	const genre_api = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${api_key}`;
 
 	useEffect(() => {
 		axios
@@ -77,19 +76,18 @@ function App() {
 		await axios
 			.get(searchURL)
 			.then((res) => {
-				data = res.data
+				data = res.data;
 			})
 			.catch((err) => setError([...error, err]));
-		
-		console.log(data)
+
+		console.log(data);
 		if (data.docs.length > 0) {
-			console.log('hello')
+			console.log('hello');
 			let snipData = data.docs.splice(0, 21);
 			return setSearchResults([...snipData]);
+		} else {
+			return setSearchResults(null);
 		}
-		else {
-			return setSearchResults(null)
-		}	
 	}
 
 	return (
