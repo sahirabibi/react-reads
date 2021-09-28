@@ -7,9 +7,9 @@ function SearchResults() {
 	const { searchResults, updateMyReads } = useContext(DataContext);
 
 	if (searchResults === null) {
-		return <h2>Loading!</h2>;
-	} else if (searchResults.length < 1) {
 		return <h2>Nothing Found! Try a different search!</h2>;
+	} else if (!searchResults.length) {
+		return <h2>Loading!</h2>;
 	}
 
 	return (
