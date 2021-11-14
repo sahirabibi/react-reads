@@ -8,7 +8,7 @@ Featured Lists are as follows : (Hardcover-Fiction, Hardcover-Non-fiction. Paper
 I am an avid reader and love using my local library to support their mission as well as their authors. This site not only allows users to be exposed to trending titles, but also allows them to find books that they can then go and checkout at the OpenLibrary page, hence, supporting the hard work OpenLibrary does for the literary community!
 
 ## Link To Deployed App: 
-https://bibireads.netlify.app
+https://readsnreads.netlify.app
 
 ## Tech Frame Used
 - Built with React v17.0
